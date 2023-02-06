@@ -7,6 +7,8 @@ import { RiLockPasswordLine } from 'react-icons/ri';
 import { AiOutlineUser } from 'react-icons/ai';
 import { Helmet } from "react-helmet";
 import { Link } from 'react-router-dom'
+import { registerUser } from '../../../apicalls/users';
+import { message } from 'antd'
 const Register = () => {
   const formik = useFormik({
     initialValues: {
@@ -23,9 +25,18 @@ const Register = () => {
         .required('*Parol daxil edin!')
         .min(6, '*Minumum 6 simvol olmalıdır!')
     }),
-    onSubmit: values => {
+    onSubmit: async (values) => {
       // alert(JSON.stringify(values, null, 2));
-      console.log(values)
+      try {
+        const response = await registerUser()
+        if (response.success) {
+          message.success(response.message)
+        } else {
+          message.error(response.message)
+        }
+      } catch (error) {
+        message.error(error.message)
+      }
       formik.resetForm()
     },
   });
