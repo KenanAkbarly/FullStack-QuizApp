@@ -78,6 +78,8 @@ router.post('/login', async (req, res) => {
 })
 
 
+// GET USER INFORMATION
+
 
 
 module.exports = router;
