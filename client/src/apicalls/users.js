@@ -27,7 +27,7 @@ export const loginUser = async (payload) => {
 
 export const getUserInfo = async () => {
    try {
-      const response = await axiosInstance.get('/api/users/get-user-info')
+      const response = await axiosInstance.post('/api/users/get-user-info')
       return response.data
    } catch (error) {
       return error.response.data
