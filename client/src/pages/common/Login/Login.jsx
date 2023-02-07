@@ -6,6 +6,9 @@ import { HiOutlineMail } from 'react-icons/hi';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import { Helmet } from "react-helmet";
 import { Link } from 'react-router-dom'
+import { message } from 'antd'
+import { loginUser } from '../../../apicalls/users';
+
 const Login = () => {
   const formik = useFormik({
     initialValues: {
@@ -18,9 +21,19 @@ const Login = () => {
         .required('*Parol daxil edin!')
         .min(6, '*Minumum 6 simvol olmalıdır!')
     }),
-    onSubmit: values => {
+    onSubmit: async (values) => {
       // alert(JSON.stringify(values, null, 2));
-      console.log(values)
+      try {
+        const response = await loginUser(values)
+        if (response.success) {
+          message.success(response.message)
+          localStorage.setItem('token', response.data)
+        } else {
+          message.error(response.message);
+        }
+      } catch (error) {
+        message.error(error.message);
+      }
       formik.resetForm()
     },
   });

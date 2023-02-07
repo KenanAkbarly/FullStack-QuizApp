@@ -28,7 +28,7 @@ const Register = () => {
     onSubmit: async (values) => {
       // alert(JSON.stringify(values, null, 2));
       try {
-        const response = await registerUser()
+        const response = await registerUser(values)
         if (response.success) {
           message.success(response.message)
         } else {
@@ -38,14 +38,15 @@ const Register = () => {
         message.error(error.message)
       }
       formik.resetForm()
+
     },
   });
   return (
     <div className={styled.login_body}>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Login</title>
-        <link rel="canonical" href="http://mysite.com/example" />
+        <title>Register</title>
+        {/* <link rel="canonical" href="http://mysite.com/example" /> */}
       </Helmet>
       <div className={styled.header}>
         <img src="https://png.pngtree.com/png-vector/20191021/ourmid/pngtree-black-quill-feather-pen-with-writing-line-vector-logo-design-png-image_1840025.jpg" alt="" />
