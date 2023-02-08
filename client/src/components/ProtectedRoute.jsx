@@ -7,12 +7,19 @@ import { useNavigate } from 'react-router-dom'
 // 2A5473
 import styled from './style.module.scss'
 import 'remixicon/fonts/remixicon.css'
+import { Route, Link, BrowserRouter as Router } from "react-router-dom";
+import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from 'react-icons/ai';
+import { IconContext } from 'react-icons';
+import ClickAwayListener from '@mui/base/ClickAwayListener';
 const ProtectedRoute = ({ children }) => {
   const { user } = useSelector((state) => state.users)
   const [menu, setMenu] = useState([])
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const [sidebar, setSidebar] = useState(false);
 
+  const showSidebar = () => setSidebar(!sidebar);
 
   const userMenu = [
     {
@@ -68,6 +75,7 @@ const ProtectedRoute = ({ children }) => {
     getUserData()
   }, [])
   return (
+    <>    
     <div className={styled.navbar}>
       <div className={styled.container}>
       <div onClick={()=> navigate('/quizz')} className={styled.navbar_left}>
@@ -90,6 +98,39 @@ const ProtectedRoute = ({ children }) => {
       </div>
       </div>
     </div>
+    <div className={styled.ham_menu}>
+    
+    <IconContext.Provider value={{ color: '#253858' }}>
+        <div className={styled.hamburger_menu}>
+          <div onClick={()=> navigate('/quizz')} className={styled.ham_menu_navbar_left}>
+      <img src="https://png.pngtree.com/png-vector/20191021/ourmid/pngtree-black-quill-feather-pen-with-writing-line-vector-logo-design-png-image_1840025.jpg" alt="" />
+      <h1>Quizlet</h1>
+      </div>
+          <Link to='#' className={styled.menu_bars}>
+            <FaIcons.FaBars onClick={showSidebar} />
+          </Link>
+        </div>
+        <nav className={sidebar ?  styled.active : styled.nav_menu}>
+          <ul className={styled.nav_menu_items} onClick={showSidebar}>
+            <li className={styled.navbar_toggle}>
+              <Link to='#' className={styled.menu_bars}>
+                <AiIcons.AiOutlineClose />
+              </Link>
+            </li>
+            {
+            menu.map((item,index)=>{
+              return <div key={index} className={styled.nav_text}>
+                <p className={styled.nav_items} onClick={()=> item.onClick()}>{item.icon} <span>{item.title}</span></p>
+              </div>
+            })
+          }
+          </ul>
+        </nav>
+        
+      </IconContext.Provider>
+    </div>
+    </>
+
   )
 }
 
