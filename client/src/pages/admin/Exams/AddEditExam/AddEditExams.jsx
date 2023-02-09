@@ -4,6 +4,8 @@ import styled from './style.module.scss'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { MdOutlineDriveFileRenameOutline } from 'react-icons/md';
+import { BiCategoryAlt } from 'react-icons/bi';
+import { GiDuration } from 'react-icons/gi';
 const AddEditExams = () => {
   const formik = useFormik({
     initialValues: {
@@ -54,9 +56,9 @@ const AddEditExams = () => {
       </div>
 
       <div className={styled.inp_name_body}>
-      <p className={styled.exam_name}>Imtahan adı</p>
+      <p className={styled.exam_name}>Imtahan müddəti</p>
       <div className={styled.inp_body}>
-        <MdOutlineDriveFileRenameOutline/>
+        <GiDuration/>
       <input
          id="duration"
          name="duration"
@@ -71,22 +73,23 @@ const AddEditExams = () => {
          <div>{formik.errors.duration}</div>
        ) : null}
       </div>
+
       <div className={styled.inp_name_body}>
-      <p className={styled.exam_name}>Imtahan adı</p>
+      <p className={styled.exam_name}>Imtahan kategoriyası</p>
       <div className={styled.inp_body}>
-        <MdOutlineDriveFileRenameOutline/>
+        <BiCategoryAlt/>
       <input
-         id="examName"
-         name="examName"
+         id="category"
+         name="category"
          type="text"
-         placeholder='İmtahan adını daxil edin.'
+         placeholder='İmtahan kategoriyanını daxil edin.'
          onChange={formik.handleChange}
          onBlur={formik.handleBlur}
-         value={formik.values.examName}
+         value={formik.values.category}
        />
       </div>
-       {formik.touched.examName && formik.errors.examName ? (
-         <div>{formik.errors.examName}</div>
+       {formik.touched.category && formik.errors.category ? (
+         <div>{formik.errors.category}</div>
        ) : null}
       </div>
       
