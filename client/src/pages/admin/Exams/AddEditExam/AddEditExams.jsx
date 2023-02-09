@@ -12,6 +12,7 @@ const AddEditExams = () => {
       examName: '',
       duration: '',
       category: '',
+      maxMarks: '',
     },
     validationSchema: Yup.object({
       examName: Yup.string()
@@ -32,10 +33,11 @@ const AddEditExams = () => {
   return (
     <div className={styled.addExam_body}>
     <div className={styled.addExam_text}>
-        <PageTitle title='Add Exam'/>
+        <PageTitle title='İmtahan əlavə et'/>
     </div>
     <div className={styled.form_body}>
     <form onSubmit={formik.handleSubmit}>
+
       <div className={styled.inp_name_body}>
       <p className={styled.exam_name}>Imtahan adı</p>
       <div className={styled.inp_body}>
@@ -45,6 +47,7 @@ const AddEditExams = () => {
          name="examName"
          type="text"
          placeholder='İmtahan adını daxil edin.'
+        
          onChange={formik.handleChange}
          onBlur={formik.handleBlur}
          value={formik.values.examName}
@@ -90,6 +93,26 @@ const AddEditExams = () => {
       </div>
        {formik.touched.category && formik.errors.category ? (
          <div>{formik.errors.category}</div>
+       ) : null}
+      </div>
+
+
+      <div className={styled.inp_name_body}>
+      <p className={styled.exam_name}>Imtahan kategoriyası</p>
+      <div className={styled.inp_body}>
+        <BiCategoryAlt/>
+      <input
+         id="maxMarks"
+         name="maxMarks"
+         type="number"
+         placeholder='İmtahan kategoriyanını daxil edin.'
+         onChange={formik.handleChange}
+         onBlur={formik.handleBlur}
+         value={formik.values.maxMarks}
+       />
+      </div>
+       {formik.touched.category && formik.errors.maxMarks ? (
+         <div>{formik.errors.maxMarks}</div>
        ) : null}
       </div>
       
