@@ -7,20 +7,52 @@
         color: #253858;
     }
     .form_body{
-        width: 95%;
+        width: 100%;
         margin: 0 auto;
         background-color: white;
         border-radius: 10px;
-        padding: 10px 20px;
+        padding: 10px 10px;
         form{
+            width: 100%;
             display: flex;
-            justify-content: space-between;
-            
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+
         }
-        .inp_body{
-            width: 47%;
-            height: 40px;
-            border: 1px solid red;
+        .inp_name_body{
+            .exam_name{
+        color: #253858;
+        font-weight: 500;
+        font-size:18px;
+        margin-bottom: 5px;
+
+            }
+            .inp_body{
+                width: 560px;
+                height: 40px;
+                border: 1px solid rgb(230, 230, 230);
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0px 5px;
+                gap: 5px;
+                font-size: 20px;
+                input{
+                    width: 100%;
+                    height: 35px;
+                    border: none;
+                    font-size: 18px;
+                    &::placeholder{
+                        font-size: 18px;
+                        font-style: italic;
+                    }
+                    &:focus{
+                        outline: none;
+                    }
+                }
+            }
         }
     }
 }
