@@ -1,3 +1,4 @@
+import {message} from "antd";
 import React from 'react'
 import PageTitle from '../../../.././components/PageTitle/index'
 import styled from './style.module.scss'
@@ -8,7 +9,10 @@ import { BiCategoryAlt } from 'react-icons/bi';
 import { GiDuration } from 'react-icons/gi';
 import { SiVirustotal } from 'react-icons/si';
 import { VscPass } from 'react-icons/vsc';
+import { addExam } from '../../../../apicalls/exmas';
+import {useNavigate} from 'react-router-dom'
 const AddEditExams = () => {
+  const navigate = useNavigate()
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -35,8 +39,19 @@ const AddEditExams = () => {
         .required('*Bu xananı doldurun!'),
       
     }),
-    onSubmit: values => {
-      console.log("Information",values)
+    onSubmit: async values => {
+       try{
+        let response;
+        response = await addExam(values);
+        if(response.success) {
+          message.success(response.message);
+          navigate("/admin/exmas")
+        }else{
+          message.error(response.message);
+        }
+       }catch (error){
+        message.error(error.message);
+       }
     },
   });
   return (

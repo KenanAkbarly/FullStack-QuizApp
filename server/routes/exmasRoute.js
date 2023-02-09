@@ -4,7 +4,7 @@ const authMiddleware = require('../middlewares/authMiddleware');
 
 // ADD EXAM
 
-router.post('/add', authMiddleware, async (req, res) => {
+router.post("/add", authMiddleware, async (req, res) => {
     try {
         // EXAM ALREADY EXISTS
         const examExist = await Exam.findOne({ name: req.body.name });

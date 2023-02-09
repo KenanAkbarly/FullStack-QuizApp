@@ -11,9 +11,7 @@ const ProtectedRoute = ({ children }) => {
   const [menu, setMenu] = useState([])
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const [sidebar, setSidebar] = useState(false);
 
-  const showSidebar = () => setSidebar(!sidebar);
 
   const userMenu = [
     {
@@ -98,7 +96,6 @@ const ProtectedRoute = ({ children }) => {
     }
   }
 
-  const activeRoute = window.location.pathname
   useEffect(() => {
     getUserData()
   },[])
