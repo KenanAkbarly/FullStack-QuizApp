@@ -28,10 +28,11 @@ const AddEditExams = () => {
     <div className={styled.addExam_text}>
         <PageTitle title='Add Exam'/>
     </div>
-    <div>
+    <div className={styled.form_body}>
     <form onSubmit={formik.handleSubmit}>
-       <p>Imtahan adı</p>
-      <div>
+      <div className={styled.inp_name_body}>
+      <p>Imtahan adı</p>
+      <div className={styled.inp_body}>
       <input
          id="examName"
          name="examName"
@@ -44,32 +45,10 @@ const AddEditExams = () => {
        {formik.touched.examName && formik.errors.examName ? (
          <div>{formik.errors.examName}</div>
        ) : null}
+      </div>
+      
  
-       <label htmlFor="lastName">Last Name</label>
-       <input
-         id="lastName"
-         name="lastName"
-         type="text"
-         onChange={formik.handleChange}
-         onBlur={formik.handleBlur}
-         value={formik.values.lastName}
-       />
-       {formik.touched.lastName && formik.errors.lastName ? (
-         <div>{formik.errors.lastName}</div>
-       ) : null}
- 
-       <label htmlFor="email">Email Address</label>
-       <input
-         id="email"
-         name="email"
-         type="email"
-         onChange={formik.handleChange}
-         onBlur={formik.handleBlur}
-         value={formik.values.email}
-       />
-       {formik.touched.email && formik.errors.email ? (
-         <div>{formik.errors.email}</div>
-       ) : null}
+       
  
        <button type="submit">Submit</button>
      </form>

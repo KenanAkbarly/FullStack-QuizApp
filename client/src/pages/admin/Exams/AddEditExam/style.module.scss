@@ -6,4 +6,21 @@
         margin-bottom: 20px;
         color: #253858;
     }
+    .form_body{
+        width: 95%;
+        margin: 0 auto;
+        background-color: white;
+        border-radius: 10px;
+        padding: 10px 20px;
+        form{
+            display: flex;
+            justify-content: space-between;
+            
+        }
+        .inp_body{
+            width: 47%;
+            height: 40px;
+            border: 1px solid red;
+        }
+    }
 }
