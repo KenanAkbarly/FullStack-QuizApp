@@ -1,10 +1,11 @@
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ProtectedRoute from './components/ProtectedRoute';
-import Exams from './pages/admin/Exams/Exams';
-import Login from './pages/common/Login/Login';
-import Quizz from './pages/common/Quizz/Quizz';
-import Register from './pages/common/Register/Register';
+import Exams from './pages/admin/Exams';
+import AddEditExams from './pages/admin/Exams/AddEditExam/AddEditExams';
+import Login from './pages/common/Login';
+import Quizz from './pages/common/Quizz';
+import Register from './pages/common/Register';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
           path='/quizz'
           element={
             <ProtectedRoute>
-              <Quizz />
+              <Quizz/>
             </ProtectedRoute>
           }
         />
@@ -32,10 +33,29 @@ function App() {
           path='/admin/exams'
           element={
             <ProtectedRoute>
-              <Exams />
+              <Exams/>
             </ProtectedRoute>
           }
         />
+
+        <Route
+          path='/admin/exams/add'
+          element={
+            <ProtectedRoute>
+              <AddEditExams/>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path='/admin/exams/edit/:id'
+          element={
+            <ProtectedRoute>
+              <AddEditExams/>
+            </ProtectedRoute>
+          }
+        />
+
       </Routes>
     </BrowserRouter>
   )
