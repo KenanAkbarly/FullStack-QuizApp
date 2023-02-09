@@ -11,14 +11,14 @@ import { VscPass } from 'react-icons/vsc';
 const AddEditExams = () => {
   const formik = useFormik({
     initialValues: {
-      examName: '',
+      name: '',
       duration: '',
       category: '',
-      maxMarks: '',
-      minMarks: '',
+      totalMarks: '',
+      passingMarks: '',
     },
     validationSchema: Yup.object({
-      examName: Yup.string()
+      name: Yup.string()
         .max(15, 'İmtahan adı 15 simvoldan çox ola bilməz')
         .required('*Bu xananı doldurun!'),
         duration: Yup.string()
@@ -27,16 +27,16 @@ const AddEditExams = () => {
         category: Yup.string()
         .max(15, 'İmtahan kategoriyası 15 simvoldan çox ola bilməz')
         .required('*Bu xananı doldurun!'),
-        maxMarks: Yup.string()
+        totalMarks: Yup.string()
         .min(1, 'Maximum nəticə 1-dən az ola bilməz')
         .required('*Bu xananı doldurun!'),
-        minMarks: Yup.string()
+        passingMarks: Yup.string()
         .min(1, 'Minimum nəticə 1-dən az ola bilməz')
         .required('*Bu xananı doldurun!'),
       
     }),
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
+      console.log("Information",values)
     },
   });
   return (
@@ -52,18 +52,18 @@ const AddEditExams = () => {
       <div className={styled.inp_body}>
         <MdOutlineDriveFileRenameOutline/>
       <input
-         id="examName"
-         name="examName"
+         id="name"
+         name="name"
          type="text"
          placeholder='İmtahan adını daxil edin.'
         
          onChange={formik.handleChange}
          onBlur={formik.handleBlur}
-         value={formik.values.examName}
+         value={formik.values.name}
        />
       </div>
-       {formik.touched.examName && formik.errors.examName ? (
-         <div className={styled.require}>{formik.errors.examName}</div>
+       {formik.touched.name && formik.errors.name ? (
+         <div className={styled.require}>{formik.errors.name}</div>
        ) : null}
       </div>
 
@@ -111,17 +111,17 @@ const AddEditExams = () => {
       <div className={styled.inp_body}>
         <SiVirustotal/>
       <input
-         id="maxMarks"
-         name="maxMarks"
+         id="totalMarks"
+         name="totalMarks"
          type="number"
          placeholder='İmtahanda maximum nəticəni daxil edin.'
          onChange={formik.handleChange}
          onBlur={formik.handleBlur}
-         value={formik.values.maxMarks}
+         value={formik.values.totalMarks}
        />
       </div>
-       {formik.touched.maxMarks && formik.errors.maxMarks ? (
-         <div className={styled.require}>{formik.errors.maxMarks}</div>
+       {formik.touched.totalMarks && formik.errors.totalMarks ? (
+         <div className={styled.require}>{formik.errors.totalMarks}</div>
        ) : null}
       </div>
 
@@ -131,17 +131,17 @@ const AddEditExams = () => {
       <div className={styled.inp_body}>
         <VscPass/>
       <input
-         id="minMarks"
-         name="minMarks"
+         id="passingMarks"
+         name="passingMarks"
          type="number"
          placeholder='Lazım olan minimum nəticəni daxil edin.'
          onChange={formik.handleChange}
          onBlur={formik.handleBlur}
-         value={formik.values.minMarks}
+         value={formik.values.passingMarks}
        />
       </div>
-       {formik.touched.minMarks && formik.errors.minMarks ? (
-         <div className={styled.require}>{formik.errors.minMarks}</div>
+       {formik.touched.passingMarks && formik.errors.passingMarks ? (
+         <div className={styled.require}>{formik.errors.passingMarks}</div>
        ) : null}
       </div>
        <button type="submit">Əlavə et</button></div>
