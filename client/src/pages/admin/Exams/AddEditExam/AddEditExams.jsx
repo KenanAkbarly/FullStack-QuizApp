@@ -45,7 +45,7 @@ const AddEditExams = () => {
         response = await addExam(values);
         if(response.success) {
           message.success(response.message);
-          navigate("/admin/exmas")
+          navigate("/admin/exams")
         }else{
           message.error(response.message);
         }
