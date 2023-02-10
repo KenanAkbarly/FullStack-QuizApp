@@ -2,11 +2,12 @@ import { message } from 'antd'
 import React, { useEffect, useState } from 'react'
 import { getUserInfo } from '../../apicalls/users'
 import { useDispatch, useSelector } from 'react-redux'
-import { SetUser } from '../../redux/usersSlice'
+import { SetUser } from '../../redux/usersSlice/usersSlice'
 import { useNavigate } from 'react-router-dom'
 import 'remixicon/fonts/remixicon.css'
 import Navbar from '../Navbar/Index'
 import Footer from '../.././components/Footer'
+import { HideLoading, ShowLoading } from '../../redux/loaderSlice/loaderSlice'
 const ProtectedRoute = ({ children }) => {
   const { user } = useSelector((state) => state.users)
   const [menu, setMenu] = useState([])
@@ -81,7 +82,9 @@ const ProtectedRoute = ({ children }) => {
   ]
   const getUserData = async () => {
     try {
+      dispatch(ShowLoading())
       const response = await getUserInfo()
+      dispatch(HideLoading())
       if (response.success) {
         dispatch(SetUser(response.data))
         if (response.data.isAdmin) {
@@ -93,6 +96,7 @@ const ProtectedRoute = ({ children }) => {
         message.error(response.message)
       }
     } catch (error) {
+      dispatch(HideLoading())
       message.error(error.message)
     }
   }

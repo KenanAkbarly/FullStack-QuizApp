@@ -9,7 +9,10 @@ import { Helmet } from "react-helmet";
 import { Link } from 'react-router-dom'
 import { registerUser } from '../../../apicalls/users';
 import { message } from 'antd'
+import { useDispatch } from 'react-redux';
+import { HideLoading, ShowLoading } from '../../../redux/loaderSlice/loaderSlice';
 const Register = () => {
+  const dispatch = useDispatch()
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -28,13 +31,16 @@ const Register = () => {
     onSubmit: async (values) => {
       // alert(JSON.stringify(values, null, 2));
       try {
+        dispatch(ShowLoading())
         const response = await registerUser(values)
+        dispatch(HideLoading())
         if (response.success) {
           message.success(response.message)
         } else {
           message.error(response.message)
         }
       } catch (error) {
+        dispatch(HideLoading())
         message.error(error.message)
       }
       formik.resetForm()

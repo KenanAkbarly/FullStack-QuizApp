@@ -8,8 +8,10 @@ import { Helmet } from "react-helmet";
 import { Link } from 'react-router-dom'
 import { message } from 'antd'
 import { loginUser } from '../../../apicalls/users';
-
+import { useDispatch } from 'react-redux'
+import { ShowLoading, HideLoading } from '../../.././redux/loaderSlice/loaderSlice'
 const Login = () => {
+  const dispatch = useDispatch()
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -24,7 +26,9 @@ const Login = () => {
     onSubmit: async (values) => {
       // alert(JSON.stringify(values, null, 2));
       try {
+        dispatch(ShowLoading())
         const response = await loginUser(values)
+        dispatch(HideLoading())
         if (response.success) {
           message.success(response.message)
           localStorage.setItem('token', response.data)
@@ -33,6 +37,7 @@ const Login = () => {
           message.error(response.message);
         }
       } catch (error) {
+        dispatch(HideLoading())
         message.error(error.message);
       }
       formik.resetForm()
