@@ -13,6 +13,7 @@ const Exams = () => {
         <i className='ri-add-line'></i>
         Imtahan əlavə et
        </button>
+       
        </div>
     </div>
   )

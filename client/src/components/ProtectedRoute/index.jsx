@@ -6,6 +6,7 @@ import { SetUser } from '../../redux/usersSlice'
 import { useNavigate } from 'react-router-dom'
 import 'remixicon/fonts/remixicon.css'
 import Navbar from '../Navbar/Index'
+import Footer from '../.././components/Footer'
 const ProtectedRoute = ({ children }) => {
   const { user } = useSelector((state) => state.users)
   const [menu, setMenu] = useState([])
@@ -103,6 +104,7 @@ const ProtectedRoute = ({ children }) => {
     <>
     <Navbar menu = {menu}/>
       {children}
+      <Footer/>
     </>
 
   )
