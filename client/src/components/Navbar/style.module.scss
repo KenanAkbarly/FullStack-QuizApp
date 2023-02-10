@@ -21,6 +21,7 @@
                 width: 70px;
                 height: 70px;
                 mix-blend-mode:color-burn;
+
             }
         }
         .navbar_right{
@@ -54,9 +55,6 @@
         color: white;
 
                 }
-            
-               
-
                 .active_modal{
                   width: 150px;
                   height: 200px;
@@ -79,10 +77,6 @@
                   background-color: red;
                   justify-content: center;
                   display: none;
-    // position: fixed;
-    // top: -100px;
-    // right: -1000px;
-    // transition: 850ms;
                 }
             }
             .modal_items{
@@ -106,8 +100,7 @@
                 font-size: 16px;
               }
 
-                .active_modal{
-                  
+                .active_modal{    
                   height: 80px;
                   background-color:white;
                   position: fixed;
@@ -139,26 +132,11 @@
     }
 }
 .ham_menu{
-    .ham_menu_navbar_left{
-        display: flex;
-        width:250px ;
-        height: 70px;
-        align-items: center;
-        color: #253858;
-         font-size: 18px;
-         
-         cursor: pointer;
-        img {
-            width: 70px;
-            height: 70px;
-            mix-blend-mode:hard-light;
-        }
-    }
-
-
-.hamburger_menu {
+  .hamburger_menu {
     height: 70px;
-    background-color: white;
+      background-color: rgba(250, 250, 250, 0.562);
+
+
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -166,12 +144,36 @@
     display: none ;
     padding: 0px 30px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+ 
+
   }
+    .ham_menu_navbar_left{
+        display: flex;
+        width:250px ;
+        height: 70px;
+        align-items: center;
+        color: #253858;
+         font-size: 18px;
+        //  position: absolute;
+         cursor: pointer;
+        img {
+          mix-blend-mode:color-burn;
+            width: 70px;
+            height: 70px;
+            
+
+        }
+    }
+
+
+
   
   .menu_bars {
     margin-left: 2rem;
     font-size: 2rem;
     background: none;
+    // z-index: 1000000;
+
   }
   
   .nav_menu {
@@ -184,6 +186,9 @@
     top: 0;
     right: -100%;
     transition: 850ms;
+    // position: absolute;
+    z-index: 99999;
+
     
 }
 .active {
@@ -194,6 +199,7 @@
     display: flex;
     justify-content: center;
     position: fixed;
+    z-index: 99999;
     right: 0;
     top: 0;
     transition: 350ms;

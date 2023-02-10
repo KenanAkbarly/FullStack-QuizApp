@@ -3,7 +3,6 @@ const Exam = require('../models/examModel');
 const authMiddleware = require('../middlewares/authMiddleware');
 
 // ADD EXAM
-
 router.post("/add", authMiddleware, async (req, res) => {
     try {
         // EXAM ALREADY EXISTS
@@ -28,4 +27,40 @@ router.post("/add", authMiddleware, async (req, res) => {
     }
 })
 
+
+// GET ALL EXAMS
+router.post("/get-all-exams", authMiddleware, async (req,res)=>{
+    try{
+        const exams = await Exam.find({});
+        res.send({
+            message: 'Imtahanlar ugurla getrildi',
+            data:exams,
+            success:true,
+        })
+    }catch (error){
+        res.status(500).send({
+            message: error.message,
+            data:error,
+            success:false,
+        })
+    }
+} )
+
+// GET EXAM BY ID
+router.post('/get-exam-by-id', authMiddleware, async (req, res) => {
+    try {
+        const exam = await Exam.findById(req.body.examId);
+        res.send({
+            message: 'Imtahan ugurla getrildi',
+            data:exam,
+            success:true,
+        });
+    } catch (error) {
+        res.status(500).send({
+            message: error.message,
+            data:error,
+            success:false,
+        });
+    }
+})
 module.exports = router;
