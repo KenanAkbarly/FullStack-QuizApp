@@ -23,7 +23,6 @@ const columns = [
     id: 'name',
     minWidth: 170,
     align: 'right',
-    format: (value) => value.toLocaleString('en-US'),
   },
   {
     label: 'İmtahan müddəti',
@@ -50,14 +49,7 @@ const columns = [
     align: 'right',
 
   },
-  {
-    label: "Əməliyyat",
-    id: 'action',
-    minWidth: 170,
-    align: 'right'
-    
-    
-  }
+ 
 ];
 const Exams = () => {
   const navigate = useNavigate();
@@ -120,6 +112,7 @@ const Exams = () => {
                   {column.label}
                 </TableCell>
               ))}
+              <p className={style.action_name}>Əməliyyatlar</p>
             </TableRow>
           </TableHead>
           <TableBody>
