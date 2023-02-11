@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const Exam = require('../models/examModel');
 const authMiddleware = require('../middlewares/authMiddleware');
-
+const Question = require('../models/questionModel');
 // ADD EXAM
 router.post("/add", authMiddleware, async (req, res) => {
     try {
@@ -26,7 +26,6 @@ router.post("/add", authMiddleware, async (req, res) => {
         });
     }
 })
-
 
 // GET ALL EXAMS
 router.post("/get-all-exams", authMiddleware, async (req, res) => {
@@ -97,5 +96,49 @@ router.post('/delete-exam-by-id', authMiddleware, async (req, res) => {
         });
     }
 })
+
+// ADD QUESTION TO EXAM
+router.post('/add-question-to-exam', authMiddleware, async (req, res) => {
+    try {
+        // ADD QUESTION TO QUESTION COLLECTION
+        const newQuestion = new Question(req.body);
+        const question = await newQuestion.save();
+
+        // ADD QUESTION TO EXAM
+        const exam = await Exam.findById(req.body.exam);
+        exam.questions.push(question._id);
+        await exam.save();
+        res.send({
+            message: 'Sual əlavə edildi',
+            success: true,
+        })
+    } catch (error) {
+        res.status(500).send({
+            message: error.message,
+            data: error,
+            success: false,
+        })
+    }
+})
+
+// EDIT QUESTION IN EXAM
+router.post('/edit-question-in-exam', authMiddleware, async (req, res) => {
+    try {
+        // EDIT QUESTION IN QUESTION COLLECTION
+        await Question.findByIdAndUpdate(req.body.questionId, req.body);
+        res.send({
+            message: 'Suala düzəliş edildi',
+            success: true,
+        });
+    } catch (error) {
+        res.status(500).send({
+            message: error.message,
+            data: error,
+            success: false,
+        });
+    }
+})
+
+// DELETE QUETION IN THE EXAM
 
 module.exports = router;
