@@ -2,7 +2,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ProtectedRoute from './components/ProtectedRoute';
 import Exams from './pages/admin/Exams';
-import AddEditExams from './pages/admin/Exams/AddEditExam/AddEditExams';
+import AddEditExams from './pages/admin/Exams/AddEditExam';
 import Login from './pages/common/Login';
 import Quizz from './pages/common/Quizz';
 import Register from './pages/common/Register';

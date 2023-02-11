@@ -14,14 +14,31 @@
         background-color: white;
         border-radius: 10px;
         padding: 10px 30px;
-
-        form {
+        .tab_pane1{
             width: 100%;
             display: flex;
             justify-content: start;
             flex-wrap: wrap;
             gap: 10px;
-            button {
+        }
+        form {
+            .cancelBtn{
+                margin-top: 20px;
+                width: 150px;
+                height: 40px;
+                border-radius: 5px;
+                border: none;
+                color: white;
+                font-size: 15px;
+                font-weight: 500;
+                transition: all 0.2s ease;
+                background-color: #0067F1;
+                &:hover {
+                    background-color: #468ce9;
+                    cursor: pointer;
+                }
+            } 
+            .addBtn{
                 margin-top: 20px;
                 width: 150px;
                 height: 40px;
@@ -32,12 +49,10 @@
                 font-size: 15px;
                 font-weight: 500;
                 transition: all 0.2s ease;
-
+                margin-left: 20px;
                 &:hover {
                     background-color: #72b75f;
                     cursor: pointer;
-
-
                 }
 
             }

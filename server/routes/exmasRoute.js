@@ -29,22 +29,22 @@ router.post("/add", authMiddleware, async (req, res) => {
 
 
 // GET ALL EXAMS
-router.post("/get-all-exams", authMiddleware, async (req,res)=>{
-    try{
+router.post("/get-all-exams", authMiddleware, async (req, res) => {
+    try {
         const exams = await Exam.find({});
         res.send({
             message: 'Imtahanlar ugurla getrildi',
-            data:exams,
-            success:true,
+            data: exams,
+            success: true,
         })
-    }catch (error){
+    } catch (error) {
         res.status(500).send({
             message: error.message,
-            data:error,
-            success:false,
+            data: error,
+            success: false,
         })
     }
-} )
+})
 
 // GET EXAM BY ID
 router.post('/get-exam-by-id', authMiddleware, async (req, res) => {
@@ -52,15 +52,50 @@ router.post('/get-exam-by-id', authMiddleware, async (req, res) => {
         const exam = await Exam.findById(req.body.examId);
         res.send({
             message: 'Imtahan ugurla getrildi',
-            data:exam,
-            success:true,
+            data: exam,
+            success: true,
         });
     } catch (error) {
         res.status(500).send({
             message: error.message,
-            data:error,
-            success:false,
+            data: error,
+            success: false,
         });
     }
 })
+
+// EDIT EXAM BY ID
+router.post('/edit-exam-by-id', authMiddleware, async (req, res) => {
+    try {
+        await Exam.findByIdAndUpdate(req.body.examId, req.body);
+        res.send({
+            message: 'Dəyişiklik qeydə alındı',
+            success: true,
+        });
+    } catch (error) {
+        res.status(500).send({
+            message: error.message,
+            data: error,
+            success: false,
+        });
+    }
+})
+
+// DELETE EXAM BY ID
+router.post('/delete-exam-by-id', authMiddleware, async (req, res) => {
+    try {
+        await Exam.findByIdAndDelete(req.body.examId);
+        res.send({
+            message: 'Imtahan silindi',
+            success: true,
+        });
+    } catch (error) {
+        res.status(500).send({
+            message: error.message,
+            data: error,
+            success: false,
+        });
+    }
+})
+
 module.exports = router;
