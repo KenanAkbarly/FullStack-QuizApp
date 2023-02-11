@@ -140,5 +140,23 @@ router.post('/edit-question-in-exam', authMiddleware, async (req, res) => {
 })
 
 // DELETE QUETION IN THE EXAM
+router.post('/delete-question-in-exam', authMiddleware, async (req, res) => {
+    try {
+        // DELETE QUETION IN QUESTIONS COLLECTION
+        await Question.findByIdAndDelete(req.body.questionId);
 
+        // DELETE QUETION IN EXAM
+        const exam = await Exam.findById(req.body.examId);
+        exam.questions = exam.questions.filter(
+            (question) => question._id != req.body.questionId
+        );
+        await exam.save();
+        res.send({
+            message: 'Sual silindi',
+            success: true,
+        });
+    } catch (error) {
+
+    }
+})
 module.exports = router;
