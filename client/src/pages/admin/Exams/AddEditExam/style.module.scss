@@ -108,3 +108,26 @@
         }
     }
 }
+.qustion_header{
+    display: flex;
+    justify-content: end;
+    .add_question_btn{
+        display: flex;
+        align-items: center;
+        border: 2px solid #253858;
+        background-color: transparent;
+        color: #253858;
+        padding: 5px 10px;
+        font-weight: 500;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover{
+            background-color: #5aa2f5;
+            border: 2px solid transparent;
+            color: white;
+
+        }
+    }
+}

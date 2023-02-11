@@ -219,7 +219,10 @@ const AddEditExams = () => {
 
             </TabPane>
             {params.id && <TabPane tab='Imtahan Suallari' key='2'>
-              <h1>QUESTIONS</h1>
+              <div className={styled.qustion_header}>
+            
+                <button className={styled.add_question_btn}><i className='ri-add-line'></i><span>Sual əlavə et</span></button>
+              </div>
             </TabPane>}
           </Tabs>
 
@@ -228,5 +231,5 @@ const AddEditExams = () => {
     </div>
   )
 }
-//add edit button
+
 export default AddEditExams
