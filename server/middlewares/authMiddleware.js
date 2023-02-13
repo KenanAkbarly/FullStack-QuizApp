@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
         next();
     } catch (error) {
         res.status(401).send({
-            message: 'Siz təsdiqlənməmisiniz!',
+            message: 'Giriş uğursuz alındı!',
             data: error,
             success: false
         });

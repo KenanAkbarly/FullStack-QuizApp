@@ -54,7 +54,7 @@ const Exams = () => {
   const navigate = useNavigate();
   const [exams, setExams] = useState([])
   const dispatch = useDispatch();
-
+  console.log('exams',exams)
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
@@ -109,7 +109,6 @@ const Exams = () => {
       <div >
         <div className={style.exams_header}>
           <PageTitle title="İmtahanlar" />
-
           <button className={style.add_button} onClick={() => navigate('/admin/exams/add')}>
             <i className='ri-add-line'></i>
             Imtahan əlavə et

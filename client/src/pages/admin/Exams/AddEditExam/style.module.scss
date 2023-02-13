@@ -131,3 +131,38 @@
         }
     }
 }
+.action{
+    display: flex;
+    gap: 15px;
+    font-size: 18px;
+    span{
+        margin-top: 15px;
+        width: 40px;
+        height: 25px;   
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        &:hover{
+            &:nth-child(1){
+                border: 1px solid goldenrod;
+            }
+            &:nth-child(2){
+                border: 1px solid red;
+            }
+        }
+        &:nth-child(1){
+            color: goldenrod;
+        }
+        &:nth-child(2){
+            color: red;
+        }
+    }
+}
+.action_name{
+    margin-top: 20px;
+    font-size: 14px;
+    color: black;
+    width: 100px;
+    margin-left: 10px;
+}
