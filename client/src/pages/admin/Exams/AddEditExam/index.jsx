@@ -9,7 +9,12 @@ import { BiCategoryAlt } from "react-icons/bi";
 import { GiDuration } from "react-icons/gi";
 import { SiVirustotal } from "react-icons/si";
 import { VscPass } from "react-icons/vsc";
-import { addExam, editExamById, getExamById } from "../../../../apicalls/exmas";
+import {
+  addExam,
+  deleteQuestionById,
+  editExamById,
+  getExamById,
+} from "../../../../apicalls/exmas";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {
@@ -21,7 +26,7 @@ import TabPane from "rc-tabs/lib/TabPanelList/TabPane";
 import AddEditQuestion from "../AddEditQuestion";
 import { FiEdit3 } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import {Table} from "antd";
+import { Table } from "antd";
 
 const AddEditExams = () => {
   const navigate = useNavigate();
@@ -30,7 +35,7 @@ const AddEditExams = () => {
   console.log("examData", examData);
   const [showAddEditQuestionModal, setShowAddEditQuestionModal] =
     useState(false);
-    const [selcetedQuestion,setSelcetedQuestion] = useState(null)
+  const [selcetedQuestion, setSelcetedQuestion] = useState(null);
   const params = useParams();
   const formik = useFormik({
     initialValues: {
@@ -120,16 +125,24 @@ const AddEditExams = () => {
     }
   }, [examData]);
 
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
+  const deleteQuestion = async (questionId) => {
+    try {
+      dispatch(ShowLoading());
+      const response = await deleteQuestionById({
+        questionId,
+        examId : params.id
+      });
+      dispatch(HideLoading());
+      if (response.success) {
+        message.success(response.message);
+        getExamData();
+      } else {
+        message.error(response.message);
+      }
+    } catch (error) {
+      dispatch(HideLoading());
+      message.error(error.message);
+    }
   };
 
   const questionColumns = [
@@ -137,44 +150,54 @@ const AddEditExams = () => {
       title: "Suallar",
       dataIndex: "name",
       align: "left",
-      width: '500px'
+      width: "500px",
     },
     {
-      title: 'Variantlar',
-      dataIndex: 'options',
-      render: (text, record)=>{
-        return Object.keys(record.options).map((key)=>{
-           return <div>{key} : {record.options[key]}</div>
-        })
+      title: "Variantlar",
+      dataIndex: "options",
+      render: (text, record) => {
+        return Object.keys(record.options).map((key) => {
+          return (
+            <div>
+              {key} : {record.options[key]}
+            </div>
+          );
+        });
       },
-     
-
     },
     {
       title: "Düzgün cavab",
       dataIndex: "correctOption",
       align: "left",
-      render: (text, record) =>{
-        return ` ${record.correctOption} : ${record.options[record.correctOption]}`
-      }
+      render: (text, record) => {
+        return ` ${record.correctOption} : ${
+          record.options[record.correctOption]
+        }`;
+      },
     },
     {
       title: "Əməliyyatlar",
       dataIndex: "action",
       render: (text, record) => {
-       return <div className={styled.action}>
-          <span onClick={()=> {
-            setSelcetedQuestion(record);
-            setShowAddEditQuestionModal(true);
-          }
-           
-          } >
-            <FiEdit3 />
-          </span>
-          <span >
-            <RiDeleteBin6Line />
-          </span>
-        </div>;
+        return (
+          <div className={styled.action}>
+            <span
+              onClick={() => {
+                setSelcetedQuestion(record);
+                setShowAddEditQuestionModal(true);
+              }}
+            >
+              <FiEdit3 />
+            </span>
+            <span
+              onClick={() => {
+                deleteQuestion(record._id);
+              }}
+            >
+              <RiDeleteBin6Line />
+            </span>
+          </div>
+        );
       },
     },
   ];
@@ -320,10 +343,12 @@ const AddEditExams = () => {
                       <span>Sual əlavə et</span>
                     </button>
                   </div>
+                  <div className={styled.table}>
                   <Table
                     columns={questionColumns}
                     dataSource={examData?.questions || []}
                   />
+                  </div>
                 </TabPane>
               )}
             </Tabs>
@@ -336,8 +361,8 @@ const AddEditExams = () => {
           showAddEditQuestionModal={showAddEditQuestionModal}
           examId={params.id}
           refreshData={getExamData}
-          selcetedQuestion = {selcetedQuestion}
-          setSelcetedQuestion = {setSelcetedQuestion}
+          selcetedQuestion={selcetedQuestion}
+          setSelcetedQuestion={setSelcetedQuestion}
         />
       )}
     </div>

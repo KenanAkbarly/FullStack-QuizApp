@@ -217,7 +217,7 @@ const AddEditQuestion = ({
           
           <div className={styled.btns}>
             <button className={styled.cancelBtn} type='button' onClick={() => setShowAddEditQuestionModal(false)}>Ləğv et</button>
-            <button className={styled.addBtn} type="submit">Submit</button>
+            <button className={styled.addBtn} type="submit">Əlavə et</button>
           </div>
         </form>
       </Modal>
