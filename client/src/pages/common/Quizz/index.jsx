@@ -6,11 +6,16 @@ import {getAllExams} from '../../../apicalls/exmas'
 import PageTitle from '../../../components/PageTitle'
 import styled from './style.module.scss'
 import {useNavigate} from 'react-router-dom'
+import { FiSearch } from 'react-icons/fi';
 const Quizz = () => {
   const [exams, setExams] = useState([])
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { user } = useSelector((state) => state.users);
+  const [examName, setExamName] = useState('')
+  const handleChange = (event) => {
+    setExamName(event.target.value)
+  }
   const getExams = async () =>{
     try {
       dispatch(ShowLoading());
@@ -37,12 +42,24 @@ const Quizz = () => {
         `Salam  ${user? user.name:''} , Quizlet Portalına Xoş Gəlmisən.`
       }/>
      </div>
-     <div>
-      <input type="text" />
+     <div className={styled.search_filter}>
+      <div className={styled.search}>
+        <FiSearch/>
+      <input value={examName} onChange={handleChange}
+      placeholder = "Imtahan axtar..."
+      type="text" />
+      </div>
+
      </div>
      <div className={styled.card_body}>
       {
-       exams && exams.map((exam) =>{
+       exams && exams.filter((exam)=>{
+        if(examName === ''){
+          return exam
+        }else if(exam.name.toLowerCase().includes(examName.toLocaleLowerCase())){
+          return exam
+        }
+       }).map((exam) =>{
           return (
             <div key={exam._id} className={styled.card}>
             <h1>{exam.name}</h1>
@@ -66,7 +83,7 @@ const Quizz = () => {
         })
       }
       
-       <div  className={styled.card}>
+       {/* <div  className={styled.card}>
             <h1>JavaScript Basics</h1>
              <p className={styled.category}>
                Kategorya : 
@@ -101,7 +118,7 @@ const Quizz = () => {
              <div className={styled.btn_body}>
                <button >İmtahana Başla</button>
              </div>
-           </div>
+           </div> */}
      </div>
       </div>
      
