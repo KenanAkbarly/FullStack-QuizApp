@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "./style.module.scss";
-const Instructions = ({ examData }) => {
-    const navigate = useNavigate()
+const Instructions = ({ examData, setView }) => {
+  const navigate = useNavigate();
   return (
     <div className={styled.Instructions_body}>
       <h1>İmtahan Təlimatları</h1>
@@ -28,15 +28,9 @@ const Instructions = ({ examData }) => {
         </li>
       </ol>
       <div className={styled.btn_body}>
-        <button onClick={()=> navigate(-1)}>
-            Legv et
-        </button>
-                      <button
-                       
-                      >
-                        İmtahana Başla
-                      </button>
-                    </div>
+        <button onClick={() => navigate(-1)}>Legv et</button>
+        <button onClick={() => setView("questions")}>İmtahana Başla</button>
+      </div>
     </div>
   );
 };
