@@ -1,10 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "./style.module.scss";
 const Instructions = ({ examData }) => {
+    const navigate = useNavigate()
   return (
     <div className={styled.Instructions_body}>
       <h1>İmtahan Təlimatları</h1>
-      <ul className={styled.Instructions_items}>
+      <ol className={styled.gradient_list}>
         <li>İmtahan müddəti {examData.duration} dəqiqədir.</li>
         <li>
           İmtahan {examData.duration} dəqiqədən sonra avtomatik olaraq
@@ -24,7 +26,17 @@ const Instructions = ({ examData }) => {
           İmtahandan keçmək üçün yazılmalı olan minimum sual sayı{" "}
           <strong>{examData.passingMarks}</strong>.
         </li>
-      </ul>
+      </ol>
+      <div className={styled.btn_body}>
+        <button onClick={()=> navigate(-1)}>
+            Legv et
+        </button>
+                      <button
+                       
+                      >
+                        İmtahana Başla
+                      </button>
+                    </div>
     </div>
   );
 };
