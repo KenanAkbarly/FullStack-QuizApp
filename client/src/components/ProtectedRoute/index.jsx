@@ -28,21 +28,6 @@ const ProtectedRoute = ({ children }) => {
       icon: <i className="ri-bar-chart-fill"></i>,
       onClick: () => navigate("/reports")
     },
-    // {
-    //   title: "Profil",
-    //   paths: ['/profiles'],
-    //   icon: <i className="ri-user-line"></i>,
-    //   onClick: () => navigate("/profile")
-    // },
-    // {
-    //   title: "Çıxış",
-    //   paths: ['/logout'],
-    //   icon: <i className="ri-logout-box-line"></i>,
-    //   onClick: () => {
-    //     localStorage.removeItem("token");
-    //     navigate("/login")
-    //   }
-    // }
 
   ]
   const adminMenu = [
@@ -64,21 +49,6 @@ const ProtectedRoute = ({ children }) => {
       icon: <i className="ri-bar-chart-fill"></i>,
       onClick: () => navigate("/admin/reports")
     },
-    // {
-    //   title: "Profil",
-    //   paths: ['/profiles'],
-    //   icon: <i className="ri-user-line"></i>,
-    //   onClick: () => navigate("/profile")
-    // },
-    // {
-    //   title: "Çıxış",
-    //   paths: ['/logout'],
-    //   icon: <i className="ri-logout-box-line"></i>,
-    //   onClick: () => {
-    //     localStorage.removeItem("token");
-    //     navigate("/login")
-    //   }
-    // }
   ]
   const getUserData = async () => {
     try {
@@ -96,13 +66,18 @@ const ProtectedRoute = ({ children }) => {
         message.error(response.message)
       }
     } catch (error) {
+      navigate('/login')
       dispatch(HideLoading())
       message.error(error.message)
     }
   }
-
+  
   useEffect(() => {
-    getUserData()
+    if(localStorage.getItem('token')){
+      getUserData()
+    }else{
+      navigate('/login')
+    }
   },[])
   return (
     <>
