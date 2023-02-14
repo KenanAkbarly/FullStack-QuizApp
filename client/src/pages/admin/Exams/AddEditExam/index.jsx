@@ -32,7 +32,6 @@ const AddEditExams = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [examData, setExamData] = useState([]);
-  console.log("examData", examData);
   const [showAddEditQuestionModal, setShowAddEditQuestionModal] =
     useState(false);
   const [selcetedQuestion, setSelcetedQuestion] = useState(null);

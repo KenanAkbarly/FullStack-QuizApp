@@ -8,6 +8,7 @@ import Quizz from './pages/common/Quizz';
 import Register from './pages/common/Register';
 import Loader from './components/Loader'
 import { useSelector } from 'react-redux';
+import WriteExam from './pages/user/WriteExam';
 function App() {
   const { loading } = useSelector(state => state.loader)
   return (
@@ -27,6 +28,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Quizz />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/user/write-exam/:id'
+            element={
+              <ProtectedRoute>
+                <WriteExam />
               </ProtectedRoute>
             }
           />
