@@ -46,19 +46,40 @@ const WriteExam = () => {
         <div className={styled.header_text}>
           <h1>{examData.name}</h1>
         </div>
-
+        
         {view === "instructions" && (
           <Instructions examData={examData} setView={setView} />
         )}
-
+         <div className={styled.writeExam}>
+          
         {view === "questions" && (
-          <div>
-            <h1>
-              {selectedQuestionIndex + 1} :
-              {questions[selectedQuestionIndex] && questions[selectedQuestionIndex].question}
-            </h1>
+          <div className={styled.question_body}>
+            <div className={styled.question_count}>
+              {examData.questions.length}
+         </div>
+         <div className={styled.question_option}>
+            <h3>
+              {selectedQuestionIndex + 1}.{" "} 
+              {questions[selectedQuestionIndex] && questions[selectedQuestionIndex].name}
+            </h3>
+            <div className={styled.option_body}>
+                {
+                    Object.keys(questions[selectedQuestionIndex].options).map((option, index)=>{
+                        return <div>
+                          
+                            <p className={styled.option}>
+                                {option}: {questions[selectedQuestionIndex].options[option]}
+                            </p>
+                        </div>
+                    })
+                }
+            </div>
+            </div>
+            
           </div>
+          
         )}
+      </div>
       </div>
     )
   );

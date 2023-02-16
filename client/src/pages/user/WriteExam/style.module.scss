@@ -12,3 +12,49 @@
          }
     }
 }
+.question_body{
+display: flex;
+// gap: 30px;
+width: 1200px;
+justify-content: center;
+margin: 0 auto;
+margin-bottom: 50px;
+margin-top: 10px;
+.question_count{
+    width: 100px;
+    background-color: red;
+}
+}
+.question_option{
+    // background-color: #5aa2f55d;
+    background-color: white;
+    width: 600px;
+    padding: 15px 30px;
+    border-radius: 10px;
+.option_body{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .option{
+        width: 250px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        // background-color: #f4f4f45e;
+        background-color: #a159ff9c;
+        border: 1px solid rgb(223, 223, 223);
+        border-radius: 7px;
+        padding: 0px 7px;
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+        color: white;
+    }
+}
+.writeExam{
+    // background-color: blue;
+
+}
+}
