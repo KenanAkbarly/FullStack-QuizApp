@@ -24,7 +24,6 @@ const Login = () => {
         .min(6, '*Minumum 6 simvol olmalıdır!')
     }),
     onSubmit: async (values) => {
-      // alert(JSON.stringify(values, null, 2));
       try {
         dispatch(ShowLoading())
         const response = await loginUser(values)

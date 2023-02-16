@@ -17,6 +17,7 @@ const WriteExam = () => {
   const [view, setView] = useState("instructions");
   const [questions = [], setQuestions] = useState([]);
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(0);
+  const [selectedOption = [], setSelectedOption] = useState({});
   const getExamData = async () => {
     try {
       dispatch(ShowLoading());
@@ -65,9 +66,18 @@ const WriteExam = () => {
             <div className={styled.option_body}>
                 {
                     Object.keys(questions[selectedQuestionIndex].options).map((option, index)=>{
-                        return <div>
+                        return <div
+                        key={index}
+                        
+                        onClick ={()=>{
+                          setSelectedOption({
+                            ...selectedOption,
+                            [selectedQuestionIndex]:option,
+                          })
+                        }}
+                        >
                           
-                            <p className={styled.option}>
+                            <p className ={`${selectedOption[selectedQuestionIndex] === option? styled.Selectedoption : styled.option }`} >
                                 {option}: {questions[selectedQuestionIndex].options[option]}
                             </p>
                         </div>
