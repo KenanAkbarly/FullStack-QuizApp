@@ -1,11 +1,17 @@
+.loader_body::-webkit-scrollbar {
+  display: none;
+}
 .loader_body{
     position: absolute;
     inset: 0;
+    height: auto;
     background-color: rgba(0,0,0,0.5);
     z-index: 99999;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-y: hidden;
+    height: 100vh;
     .lds_roller{
         display: inline-block;
         position: relative;
@@ -23,7 +29,7 @@
         width: 7px;
         height: 7px;
         border-radius: 50%;
-        background: #fff;
+        background: #ffffff;
         margin: -4px 0 0 -4px;
       }
       .lds_roller div:nth-child(1) {

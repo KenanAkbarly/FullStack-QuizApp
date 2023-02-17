@@ -18,7 +18,7 @@ const ProtectedRoute = ({ children }) => {
   const userMenu = [
     {
       title: "Əsas Səhifə",
-      paths: ['/quizz'],
+      paths: ['/quizz',"/user/write-exam"],
       icon: <i className="ri-home-2-line"></i>,
       onClick: () => navigate('/quizz'),
     },
@@ -33,7 +33,7 @@ const ProtectedRoute = ({ children }) => {
   const adminMenu = [
     {
       title: "Əsas Səhifə",
-      paths: ['/quizz'],
+      paths: ['/quizz',"/user/write-exam"],
       icon: <i className="ri-home-2-line"></i>,
       onClick: () => navigate('/quizz'),
     },

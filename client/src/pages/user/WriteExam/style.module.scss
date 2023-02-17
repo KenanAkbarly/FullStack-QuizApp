@@ -106,14 +106,27 @@ margin-top: 10px;
         width: 120px;
         height: 30px;
         &:hover{
-            background-color: #5aa2f5;
-            color: white;
-            border: 2px solid transparent;
+            // background-color: #5aa2f5;
+            // color: white;
+            // border: 2px solid transparent;
             cursor: pointer;
         }
     }
-    .previous_btn{
-
+    .next_btn{
+        background-color: #253858;
+        color: white;
+            border: 2px solid transparent;
+            cursor: pointer;
+    }
+    .submit_btn{
+        background-color: #04AA6D;
+        color: white;
+        border: none;
+        transition: all 0.3s ease;
+        &:hover{
+        background-color: #46f8b7;
+            cursor: pointer;
+        }
     }
 }
 .result_body{
@@ -145,6 +158,7 @@ margin-top: 20px;
             p{
                 color: rgb(0, 0, 0);
                 font-size: 18px;
+                margin-top: 10px;
             }
         }
         .lottie_animation{
@@ -152,4 +166,57 @@ margin-top: 20px;
             height: 300px;
         }
     }
+}
+
+
+@media screen and (max-width: 1200px) {
+    .Instructions_body{
+        width: 400px !important;
+    }
+   .question_body{
+    width: 690px !important;
+   }
+   .result_container{
+    width: 690px !important;
+   }
+
+}
+@media screen and (max-width: 750px) {
+    .Instructions_body{
+        width: 310px !important;
+    }
+    .question_body{
+        width: 350px !important;
+       }
+   .question_option{
+    
+   }
+   .option{
+
+       width: 290px !important;
+   }
+   .Selectedoption{
+    width: 290px !important;
+   }
+   .result_container{
+    width: 350px !important;
+    .result_items{
+        width: 100% !important;
+    }
+    flex-direction: column;
+    h1{
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    p{
+        margin-left: 20px;
+    }
+
+
+}
+ .lottie_animation{
+            width: 100% !important;
+            height: 300px;
+        }
+
 }

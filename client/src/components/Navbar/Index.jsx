@@ -25,6 +25,10 @@ const Index = ({menu}) => {
         if(activeRoute.includes('/admin/exams/edit') && paths.includes('/admin/exams')){
           return true
         }
+        if(activeRoute.includes('/user/write-exam') && paths.includes('/user/write-exam')){
+          return true
+        }
+        
       }
       return false
   }
