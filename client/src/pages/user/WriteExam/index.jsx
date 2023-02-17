@@ -19,8 +19,7 @@ const WriteExam = () => {
   const [questions = [], setQuestions] = useState([]);
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(0);
   const [selectedOption = [], setSelectedOption] = useState({});
-  console.log("questions", questions);
-  let optionCount = 1;
+  const [result = {}, setResult] = useState({});
 
   const getExamData = async () => {
     try {
@@ -40,6 +39,30 @@ const WriteExam = () => {
       message.error(error.message);
     }
   };
+  const calculateResult = () => {
+    let correctAnswer = [];
+    let wrongAnswer = [];
+    questions.forEach((question, index) => {
+      if (question.correctOption === selectedOption[index]) {
+        correctAnswer.push(question);
+      } else {
+        wrongAnswer.push(question);
+      }
+    });
+
+    let verdict = "Təbriklər keçdiniz";
+    if(correctAnswer.length < examData.passingMarks){
+      verdict = "Kəsildiniz";
+    }
+    setResult({
+      correctAnswer,
+      wrongAnswer,
+      verdict,
+    });
+
+    setView("result")
+  };
+
   useEffect(() => {
     if (params.id) {
       getExamData();
@@ -99,7 +122,7 @@ const WriteExam = () => {
                 <div className={styled.next_previous_btns}>
                   {selectedQuestionIndex > 0 && (
                     <button
-                    className={styled.previous_btn}
+                      className={styled.previous_btn}
                       onClick={() => {
                         setSelectedQuestionIndex(selectedQuestionIndex - 1);
                       }}
@@ -109,12 +132,22 @@ const WriteExam = () => {
                   )}
                   {selectedQuestionIndex < questions.length - 1 && (
                     <button
-                    className={styled.next_btn}
+                      className={styled.next_btn}
                       onClick={() => {
                         setSelectedQuestionIndex(selectedQuestionIndex + 1);
                       }}
                     >
                       Növbəti
+                    </button>
+                  )}
+                  {selectedQuestionIndex === questions.length - 1 && (
+                    <button
+                      className={styled.submit_btn}
+                      onClick={() => {
+                        calculateResult()
+                      }}
+                    >
+                      Təsdiqlə
                     </button>
                   )}
                 </div>
@@ -123,7 +156,24 @@ const WriteExam = () => {
           )}
         </div>
 
-        
+        <div className={styled.result_body}>
+          {view === "result" && (
+            <div>
+              <div>
+                <h1>Nəticə</h1>
+              </div>
+              <div className={styled.marks}>
+                <p>Umimi Sual : {examData.totalMarks}</p>
+                <p>Düzgün cavab sayı: {result.correctAnswer.length}</p>
+                <p>Yalnış cavab sayı: {result.wrongAnswer.length}</p>
+                <p>
+                  Imtahandan keçmək üçün minimum nəticə: {examData.passingMarks}
+                </p>
+                <p>Status:{result.verdict}</p>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     )
   );
