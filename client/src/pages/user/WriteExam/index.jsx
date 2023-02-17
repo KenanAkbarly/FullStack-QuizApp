@@ -172,21 +172,29 @@ const WriteExam = () => {
                   <p>Status:{result.verdict}</p>
                 </div>
               </div>
-              <div>
+              <div className={styled.lottie_animation}>
                 {result.verdict === "Təbriklər keçdiniz" && (
                   <lottie-player
                     src="https://assets2.lottiefiles.com/packages/lf20_uu0x8lqv.json"
                     background="transparent"
                     speed="1"
-                    style="width: 300px; height: 300px;"
                     loop
-                    controls
                     autoplay
                   ></lottie-player>
                 )}
+                 {result.verdict === "Kəsildiniz" && (
+            <lottie-player
+              src="https://assets5.lottiefiles.com/packages/lf20_CJFDsxSINb.json"
+              background="transparent"
+              speed="1"
+              loop
+              autoplay
+            ></lottie-player>
+          )}
               </div>
             </div>
           )}
+         
         </div>
       </div>
     )
