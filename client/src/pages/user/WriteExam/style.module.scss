@@ -31,6 +31,7 @@ margin-top: 10px;
     width: 600px;
     padding: 15px 30px;
     border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 .option_body{
     display: flex;
     width: 100%;
@@ -42,15 +43,15 @@ margin-top: 10px;
         display: flex;
         align-items: center;
         margin-top: 20px;
-        background-color: #f4f4f45e;
-        // background-color: #a159ff9c;
+        // background-color: #f4f4f4;
+        background-color: #a159ff9c;
          border:2px solid transparent;
         border-radius: 7px;
         padding: 0px 7px;
         font-size: 18px;
         font-weight: 500;
         cursor: pointer;
-        color: black;
+        color: white;
     }
     .Selectedoption{
         width: 250px;
@@ -58,15 +59,15 @@ margin-top: 10px;
         display: flex;
         align-items: center;
         margin-top: 20px;
-        background-color: #dedede5e;
-        // background-color: #b379ff9c;
+        // background-color: #aaaaaa5e;
+        background-color: #b688f19c;
         border: 2px solid #253858;
         border-radius: 7px;
         padding: 0px 7px;
         font-size: 18px;
         font-weight: 500;
         cursor: pointer;
-        color: black;
+        color: white;
     }
 }
 .selectedOption{
@@ -77,4 +78,9 @@ margin-top: 10px;
     // background-color: blue;
 
 }
+}
+.next_previous_btns{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
