@@ -155,7 +155,6 @@ const WriteExam = () => {
             </div>
           )}
         </div>
-
         <div className={styled.result_body}>
           {view === "result" && (
             <div className={styled.result_container}>
@@ -169,7 +168,7 @@ const WriteExam = () => {
                     Imtahandan keçmək üçün minimum nəticə:{" "}
                     {examData.passingMarks}
                   </p>
-                  <p>Status:{result.verdict}</p>
+                  <p>Status: {result.verdict}.</p>
                 </div>
               </div>
               <div className={styled.lottie_animation}>

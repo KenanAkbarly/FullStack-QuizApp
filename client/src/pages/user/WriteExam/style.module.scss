@@ -119,10 +119,12 @@ margin-top: 10px;
 .result_body{
     width: 100%;
     .result_container{
-        width: 800px;
+        width: 1000px;
         margin: 0 auto;
         display: flex;
         justify-content: center;
+        align-items: center;
+        padding: 5px 10px;
         /* From https://css.glass */
 background: rgba(51, 150, 227, 0.43);
 border-radius: 16px;
@@ -133,8 +135,10 @@ border: 1px solid rgba(51, 150, 227, 0.75);
 margin-bottom: 50px;
 margin-top: 20px;
         .result_items{
+            width: 50%;
             h1{
-                background: -webkit-linear-gradient(#0dbc47, #2f2fb5);
+                background: #7A25CF;
+                background: repeating-linear-gradient(to right, #7A25CF 0%, #44CFAF 100%);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
             }
@@ -142,6 +146,10 @@ margin-top: 20px;
                 color: rgb(0, 0, 0);
                 font-size: 18px;
             }
+        }
+        .lottie_animation{
+            width: 40%;
+            height: 300px;
         }
     }
 }
