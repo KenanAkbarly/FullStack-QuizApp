@@ -51,7 +51,7 @@ const WriteExam = () => {
     });
 
     let verdict = "Təbriklər keçdiniz";
-    if(correctAnswer.length < examData.passingMarks){
+    if (correctAnswer.length < examData.passingMarks) {
       verdict = "Kəsildiniz";
     }
     setResult({
@@ -60,7 +60,7 @@ const WriteExam = () => {
       verdict,
     });
 
-    setView("result")
+    setView("result");
   };
 
   useEffect(() => {
@@ -144,7 +144,7 @@ const WriteExam = () => {
                     <button
                       className={styled.submit_btn}
                       onClick={() => {
-                        calculateResult()
+                        calculateResult();
                       }}
                     >
                       Təsdiqlə
@@ -158,18 +158,32 @@ const WriteExam = () => {
 
         <div className={styled.result_body}>
           {view === "result" && (
-            <div>
-              <div>
-                <h1>Nəticə</h1>
+            <div className={styled.result_container}>
+              <div className={styled.result_items}>
+                <h1>Imtahan Nəticəsi</h1>
+                <div className={styled.marks}>
+                  <p>Umimi Sual : {examData.totalMarks}</p>
+                  <p>Düzgün cavab sayı: {result.correctAnswer.length}</p>
+                  <p>Yalnış cavab sayı: {result.wrongAnswer.length}</p>
+                  <p>
+                    Imtahandan keçmək üçün minimum nəticə:{" "}
+                    {examData.passingMarks}
+                  </p>
+                  <p>Status:{result.verdict}</p>
+                </div>
               </div>
-              <div className={styled.marks}>
-                <p>Umimi Sual : {examData.totalMarks}</p>
-                <p>Düzgün cavab sayı: {result.correctAnswer.length}</p>
-                <p>Yalnış cavab sayı: {result.wrongAnswer.length}</p>
-                <p>
-                  Imtahandan keçmək üçün minimum nəticə: {examData.passingMarks}
-                </p>
-                <p>Status:{result.verdict}</p>
+              <div>
+                {result.verdict === "Təbriklər keçdiniz" && (
+                  <lottie-player
+                    src="https://assets2.lottiefiles.com/packages/lf20_uu0x8lqv.json"
+                    background="transparent"
+                    speed="1"
+                    style="width: 300px; height: 300px;"
+                    loop
+                    controls
+                    autoplay
+                  ></lottie-player>
+                )}
               </div>
             </div>
           )}
