@@ -9,6 +9,7 @@ import {
 } from "../../../redux/loaderSlice/loaderSlice";
 import Instructions from "./Instructions";
 import styled from "./style.module.scss";
+
 const WriteExam = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -18,6 +19,9 @@ const WriteExam = () => {
   const [questions = [], setQuestions] = useState([]);
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(0);
   const [selectedOption = [], setSelectedOption] = useState({});
+  console.log("questions", questions);
+  let optionCount = 1;
+
   const getExamData = async () => {
     try {
       dispatch(ShowLoading());
@@ -54,9 +58,10 @@ const WriteExam = () => {
         <div className={styled.writeExam}>
           {view === "questions" && (
             <div className={styled.question_body}>
-              <div className={styled.question_count}>
-                {examData.questions.length}
-              </div>
+              {/* <div className={styled.question_count}>
+               
+           
+              </div> */}
               <div className={styled.question_option}>
                 <h3>
                   {selectedQuestionIndex + 1}.{" "}
@@ -94,6 +99,7 @@ const WriteExam = () => {
                 <div className={styled.next_previous_btns}>
                   {selectedQuestionIndex > 0 && (
                     <button
+                    className={styled.previous_btn}
                       onClick={() => {
                         setSelectedQuestionIndex(selectedQuestionIndex - 1);
                       }}
@@ -103,6 +109,7 @@ const WriteExam = () => {
                   )}
                   {selectedQuestionIndex < questions.length - 1 && (
                     <button
+                    className={styled.next_btn}
                       onClick={() => {
                         setSelectedQuestionIndex(selectedQuestionIndex + 1);
                       }}
@@ -115,6 +122,8 @@ const WriteExam = () => {
             </div>
           )}
         </div>
+
+        
       </div>
     )
   );

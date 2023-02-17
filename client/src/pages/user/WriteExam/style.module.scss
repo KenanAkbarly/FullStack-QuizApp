@@ -39,32 +39,34 @@ margin-top: 10px;
     justify-content: space-between;
     .option{
         width: 250px;
-        height: 50px;
+        // height: 40px;
         display: flex;
         align-items: center;
         margin-top: 20px;
         // background-color: #f4f4f4;
-        background-color: #a159ff9c;
+        // background-color: #59a6ff9c;
+        background-color: #6db0fcfe;
          border:2px solid transparent;
         border-radius: 7px;
-        padding: 0px 7px;
-        font-size: 18px;
+        padding: 7px 7px;
+        font-size: 16px;
         font-weight: 500;
         cursor: pointer;
         color: white;
     }
     .Selectedoption{
         width: 250px;
-        height: 50px;
+        // height: 50px;
         display: flex;
         align-items: center;
         margin-top: 20px;
         // background-color: #aaaaaa5e;
-        background-color: #b688f19c;
-        border: 2px solid #253858;
+        // background-color: #b688f19c;
+        background-color: #85bdfd9c;
+        border: 2px solid #163c7f;
         border-radius: 7px;
-        padding: 0px 7px;
-        font-size: 18px;
+        padding: 7px 7px;
+        font-size: 16px;
         font-weight: 500;
         cursor: pointer;
         color: white;
@@ -83,4 +85,34 @@ margin-top: 10px;
     width: 100%;
     display: flex;
     justify-content: space-between;
+    margin-top: 20px;
+    // button{
+    //     width: 120px;
+    //     height: 30px;
+    //     border: none;
+    //     font-weight: 500;
+    //     font-size: 15px;
+    //     border-radius: 7px;
+    // }
+    button{
+        border: 2px solid  #253858;
+        background-color: transparent;
+        padding: 5px 10px;
+        border-radius: 5px;
+        color: #253858;
+        font-weight: 500;
+        font-size: 15px;
+        transition: all 0.3s ease;
+        width: 120px;
+        height: 30px;
+        &:hover{
+            background-color: #5aa2f5;
+            color: white;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+    }
+    .previous_btn{
+
+    }
 }
