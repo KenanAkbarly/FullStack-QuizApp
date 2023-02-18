@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "./style.module.scss";
+import {Helmet} from "react-helmet";
 const Instructions = ({ examData, setView, startTimer }) => {
   const navigate = useNavigate();
   return (
@@ -34,6 +35,10 @@ const Instructions = ({ examData, setView, startTimer }) => {
           setView("questions")
         }}>İmtahana Başla</button>
       </div>
+      <Helmet>
+                <meta charSet="utf-8" />
+                <title>Təlimatlar</title>
+            </Helmet>
     </div>
   );
 };

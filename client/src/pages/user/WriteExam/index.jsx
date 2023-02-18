@@ -1,6 +1,6 @@
 import { message } from "antd";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { getExamById } from "../../../apicalls/exmas";
 import {
@@ -9,7 +9,8 @@ import {
 } from "../../../redux/loaderSlice/loaderSlice";
 import Instructions from "./Instructions";
 import styled from "./style.module.scss";
-import { CountdownCircleTimer } from 'react-countdown-circle-timer'
+import { addReport } from "../../../apicalls/reports";
+import {Helmet} from "react-helmet";
 const WriteExam = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -20,10 +21,11 @@ const WriteExam = () => {
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(0);
   const [selectedOption = [], setSelectedOption] = useState({});
   const [result = {}, setResult] = useState({});
-  const [minute, setMinute] = useState(0)
-  const [second, setSecond] = useState(0)
-  const [timeUp ,setTimeUp] = useState(false)
-  const [intervalId, setIntervalId] = useState(null)
+  const [minute, setMinute] = useState(0);
+  const [second, setSecond] = useState(0);
+  const [timeUp, setTimeUp] = useState(false);
+  const [intervalId, setIntervalId] = useState(null);
+  const { user } = useSelector((state) => state.users);
   const getExamData = async () => {
     try {
       dispatch(ShowLoading());
@@ -43,51 +45,67 @@ const WriteExam = () => {
       message.error(error.message);
     }
   };
-  
-  const calculateResult = () => {
-    let correctAnswer = [];
-    let wrongAnswer = [];
-    questions.forEach((question, index) => {
-      if (question.correctOption === selectedOption[index]) {
-        correctAnswer.push(question);
-      } else {
-        wrongAnswer.push(question);
+
+  const calculateResult = async () => {
+    try {
+      let correctAnswer = [];
+      let wrongAnswer = [];
+      questions.forEach((question, index) => {
+        if (question.correctOption === selectedOption[index]) {
+          correctAnswer.push(question);
+        } else {
+          wrongAnswer.push(question);
+        }
+      });
+
+      let verdict = "Təbriklər keçdiniz";
+      if (correctAnswer.length < examData.passingMarks) {
+        verdict = "Kəsildiniz";
       }
-    });
 
-    let verdict = "Təbriklər keçdiniz";
-    if (correctAnswer.length < examData.passingMarks) {
-      verdict = "Kəsildiniz";
+      const tempResult = {
+        correctAnswer,
+        wrongAnswer,
+        verdict,
+      };
+      setResult(tempResult);
+      dispatch(ShowLoading());
+      const response = await addReport({
+        exam: params.id,
+        result: tempResult,
+        user: user._id,
+      });
+      dispatch(HideLoading());
+      if (response.success) {
+        setView("result");
+      } else {
+        message.error(response.message);
+      }
+    } catch (error) {
+      dispatch(HideLoading());
+      message.error(error.message);
     }
-    setResult({
-      correctAnswer,
-      wrongAnswer,
-      verdict,
-    });
-
-    setView("result");
   };
 
-  const startTimer = ()=>{
+  const startTimer = () => {
     let totalMinute = examData.duration;
-    const intervalId = setInterval(()=>{
-      if(totalMinute > 0){
+    const intervalId = setInterval(() => {
+      if (totalMinute > 0) {
         totalMinute = totalMinute - 1;
-        setMinute(totalMinute)
-      }else{
+        setMinute(totalMinute);
+      } else {
         setTimeUp(true);
       }
+    }, 1000);
+    setIntervalId(intervalId);
+  };
 
-    },1000)
-    setIntervalId(intervalId)
-  }
-
-  useEffect(()=>{
-    if(timeUp){
+  useEffect(() => {
+    if (timeUp && view === "questions") {
       clearInterval(intervalId);
       calculateResult();
     }
-  },[timeUp])
+  }, [timeUp]);
 
   useEffect(() => {
     if (params.id) {
@@ -102,7 +120,12 @@ const WriteExam = () => {
         </div>
 
         {view === "instructions" && (
-          <Instructions examData={examData} setView={setView} startTimer = {startTimer}/>
+          <Instructions
+            examData={examData}
+            setView={setView}
+            startTimer={startTimer}
+          />
+          
         )}
         <div className={styled.writeExam}>
           {view === "questions" && (
@@ -112,15 +135,17 @@ const WriteExam = () => {
            
               </div> */}
               <div className={styled.question_option}>
+              <Helmet>
+                <meta charSet="utf-8" />
+                <title>{examData.name}</title>
+            </Helmet>
                 <div className={styled.text_timer}>
-                <h3>
-                  {selectedQuestionIndex + 1}.{" "}
-                  {questions[selectedQuestionIndex] &&
-                    questions[selectedQuestionIndex].name}
-                </h3>
-                <p className={styled.timer}>
-                  {minute }
-                </p>
+                  <h3>
+                    {selectedQuestionIndex + 1}.{" "}
+                    {questions[selectedQuestionIndex] &&
+                      questions[selectedQuestionIndex].name}
+                  </h3>
+                  <p className={styled.timer}>{minute}</p>
                 </div>
                 <div className={styled.option_body}>
                   {Object.keys(questions[selectedQuestionIndex].options).map(
@@ -175,9 +200,8 @@ const WriteExam = () => {
                     <button
                       className={styled.submit_btn}
                       onClick={() => {
-                        setTimeUp(true)
                         clearInterval(intervalId);
-                        calculateResult();
+                        setTimeUp(true);
                       }}
                     >
                       Təsdiqlə
@@ -214,19 +238,18 @@ const WriteExam = () => {
                     autoplay
                   ></lottie-player>
                 )}
-                 {result.verdict === "Kəsildiniz" && (
-            <lottie-player
-              src="https://assets5.lottiefiles.com/packages/lf20_CJFDsxSINb.json"
-              background="transparent"
-              speed="1"
-              loop
-              autoplay
-            ></lottie-player>
-          )}
+                {result.verdict === "Kəsildiniz" && (
+                  <lottie-player
+                    src="https://assets5.lottiefiles.com/packages/lf20_CJFDsxSINb.json"
+                    background="transparent"
+                    speed="1"
+                    loop
+                    autoplay
+                  ></lottie-player>
+                )}
               </div>
             </div>
           )}
-         
         </div>
       </div>
     )

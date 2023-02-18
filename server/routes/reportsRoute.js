@@ -25,7 +25,7 @@ router.post("/add-report", authMiddleware, async (req, res) => {
 
 // GET ALL REPORTS
 
-router.post("/get-all-attempts", authMiddleware, async (req, res) => {
+router.post("/get-all-reports", authMiddleware, async (req, res) => {
   try {
     const reports = await Report.find();
     res.send({
@@ -44,7 +44,7 @@ router.post("/get-all-attempts", authMiddleware, async (req, res) => {
 
 // GET ALL REPORTS BY USER
 
-router.post("/get-all-attempts-by-user", authMiddleware, async (req, res) => {
+router.post("/get-all-reports-by-user", authMiddleware, async (req, res) => {
   try {
     const reports = await Report.find({ user: req.body.userId });
     res.send({

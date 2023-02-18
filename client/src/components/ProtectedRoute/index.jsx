@@ -24,9 +24,9 @@ const ProtectedRoute = ({ children }) => {
     },
     {
       title: "Nəticə",
-      paths: ['/reports'],
+      paths: ['/user/reports'],
       icon: <i className="ri-bar-chart-fill"></i>,
-      onClick: () => navigate("/reports")
+      onClick: () => navigate("/user/reports")
     },
 
   ]
