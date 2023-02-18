@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "./style.module.scss";
-const Instructions = ({ examData, setView }) => {
+const Instructions = ({ examData, setView, startTimer }) => {
   const navigate = useNavigate();
   return (
     <div className={styled.Instructions_body}>
@@ -29,7 +29,10 @@ const Instructions = ({ examData, setView }) => {
       </ol>
       <div className={styled.btn_body}>
         <button onClick={() => navigate(-1)}>Legv et</button>
-        <button onClick={() => setView("questions")}>İmtahana Başla</button>
+        <button onClick={() => {
+          startTimer();
+          setView("questions")
+        }}>İmtahana Başla</button>
       </div>
     </div>
   );

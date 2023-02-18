@@ -9,7 +9,7 @@ import {
 } from "../../../redux/loaderSlice/loaderSlice";
 import Instructions from "./Instructions";
 import styled from "./style.module.scss";
-
+import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 const WriteExam = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -20,7 +20,10 @@ const WriteExam = () => {
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(0);
   const [selectedOption = [], setSelectedOption] = useState({});
   const [result = {}, setResult] = useState({});
-
+  const [minute, setMinute] = useState(0)
+  const [second, setSecond] = useState(0)
+  const [timeUp ,setTimeUp] = useState(false)
+  const [intervalId, setIntervalId] = useState(null)
   const getExamData = async () => {
     try {
       dispatch(ShowLoading());
@@ -29,8 +32,9 @@ const WriteExam = () => {
       });
       dispatch(HideLoading());
       if (response.success) {
-        setExamData(response.data);
         setQuestions(response.data.questions);
+        setExamData(response.data);
+        setMinute(response.data.duration);
       } else {
         message.error(response.message);
       }
@@ -39,6 +43,7 @@ const WriteExam = () => {
       message.error(error.message);
     }
   };
+  
   const calculateResult = () => {
     let correctAnswer = [];
     let wrongAnswer = [];
@@ -63,6 +68,27 @@ const WriteExam = () => {
     setView("result");
   };
 
+  const startTimer = ()=>{
+    let totalMinute = examData.duration;
+    const intervalId = setInterval(()=>{
+      if(totalMinute > 0){
+        totalMinute = totalMinute - 1;
+        setMinute(totalMinute)
+      }else{
+        setTimeUp(true);
+      }
+
+    },1000)
+    setIntervalId(intervalId)
+  }
+
+  useEffect(()=>{
+    if(timeUp){
+      clearInterval(intervalId);
+      calculateResult();
+    }
+  },[timeUp])
+
   useEffect(() => {
     if (params.id) {
       getExamData();
@@ -76,7 +102,7 @@ const WriteExam = () => {
         </div>
 
         {view === "instructions" && (
-          <Instructions examData={examData} setView={setView} />
+          <Instructions examData={examData} setView={setView} startTimer = {startTimer}/>
         )}
         <div className={styled.writeExam}>
           {view === "questions" && (
@@ -86,11 +112,16 @@ const WriteExam = () => {
            
               </div> */}
               <div className={styled.question_option}>
+                <div className={styled.text_timer}>
                 <h3>
                   {selectedQuestionIndex + 1}.{" "}
                   {questions[selectedQuestionIndex] &&
                     questions[selectedQuestionIndex].name}
                 </h3>
+                <p className={styled.timer}>
+                  {minute }
+                </p>
+                </div>
                 <div className={styled.option_body}>
                   {Object.keys(questions[selectedQuestionIndex].options).map(
                     (option, index) => {
@@ -144,6 +175,8 @@ const WriteExam = () => {
                     <button
                       className={styled.submit_btn}
                       onClick={() => {
+                        setTimeUp(true)
+                        clearInterval(intervalId);
                         calculateResult();
                       }}
                     >
