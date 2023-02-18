@@ -60,3 +60,6 @@ router.post("/get-all-attempts-by-user", authMiddleware, async (req, res) => {
     });
   }
 });
+
+
+module.exports = router;
