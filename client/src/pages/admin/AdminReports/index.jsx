@@ -4,17 +4,23 @@ import {Helmet} from "react-helmet";
 import styled from './style.module.scss'
 import { useDispatch } from 'react-redux';
 import { HideLoading, ShowLoading } from '../../../redux/loaderSlice/loaderSlice';
-import { getAllReportsByUser } from '../../../apicalls/reports';
+import { getAllReports } from '../../../apicalls/reports';
 import { message} from 'antd';
 import MaterialReactTable from 'material-react-table';
-const UserReports = () => {
+import moment from 'moment';
+const AdminReports = () => {
     const [reportsData, setReportsData] = useState([]);
+    console.log(reportsData);
     const dispatch = useDispatch()
-   console.log("report data",reportsData);
      const columns = useMemo(
       () => [
         {
-          header: 'Imtahan Adı',
+            header: 'İstifadəçi Adı',
+            accessorKey: 'user.name',
+          
+          },
+        {
+          header: 'İmtahan Adı',
           accessorKey: 'exam.name',
         
         },
@@ -45,7 +51,7 @@ const UserReports = () => {
       const getData = async () => {
         try {
             dispatch(ShowLoading());
-            const response = await getAllReportsByUser();
+            const response = await getAllReports();
             if(response.success){
                 setReportsData(response.data)
             }else{
@@ -65,7 +71,7 @@ const UserReports = () => {
     <div className={styled.result_body}>
         <div className={styled.result_container}>
          <div className={styled.pageTitle}>
-         <PageTitle title = {'Bütün nəticələr'}/>
+         <PageTitle title = {'Bütün istifadəçilərin nəticələri'}/>
          </div>
          <div className={styled.table_body}>
           <MaterialReactTable  displayColumnDefOptions={{
@@ -86,4 +92,4 @@ const UserReports = () => {
   )
 }
 
-export default UserReports
+export default AdminReports

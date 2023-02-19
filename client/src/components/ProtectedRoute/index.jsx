@@ -45,7 +45,7 @@ const ProtectedRoute = ({ children }) => {
     },
     {
       title: "Nəticələr",
-      paths: ['/reports'],
+      paths: ['/admin/reports'],
       icon: <i className="ri-bar-chart-fill"></i>,
       onClick: () => navigate("/admin/reports")
     },
