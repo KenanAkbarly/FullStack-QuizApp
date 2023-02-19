@@ -11,6 +11,8 @@ import Instructions from "./Instructions";
 import styled from "./style.module.scss";
 import { addReport } from "../../../apicalls/reports";
 import {Helmet} from "react-helmet";
+import { FiRepeat } from 'react-icons/fi';
+import { VscOpenPreview } from 'react-icons/vsc';
 const WriteExam = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -225,7 +227,23 @@ const WriteExam = () => {
                     Imtahandan keçmək üçün minimum nəticə:{" "}
                     {examData.passingMarks}
                   </p>
-                  <p>Status: {result.verdict}.</p>
+                  <p><strong>Status</strong>: <strong>{result.verdict}.</strong></p>
+                </div>
+                <div className={styled.result_btns}>
+                  <button
+                  className={styled.respet_btn}
+                   onClick={()=>{
+                    setView("instructions");
+                    setSelectedQuestionIndex(0);
+                    setSelectedOption({});
+                    setMinute(examData.duration)
+                   }}
+                  ><FiRepeat/> İmtahanı təkrarla</button>
+                  <button
+                  className={styled.review_btn}
+                  onClick={()=>{
+                    setView('review')
+                  }}><VscOpenPreview/> İmtahan ayrıntısı</button>
                 </div>
               </div>
               <div className={styled.lottie_animation}>
@@ -249,6 +267,26 @@ const WriteExam = () => {
                 )}
               </div>
             </div>
+          )}
+        </div>
+        <div className={styled.review_body}>
+          {view === 'review' &&(
+             <div className={styled.review_contanier}>
+                {questions.map((question, index) =>{
+                  const isCorrect = question.correctOption === selectedOption[index]
+                  return <div className={`${isCorrect? styled.correct_options_review : styled.wrong_options_review}`}>
+                     <h1>
+                      {index + 1} : {question.name}
+                     </h1>
+                     <p>
+                      Düzgün cavab : {question.correctOption} - {question.options[question.correctOption]}
+                     </p>
+                     <p>
+                      Sizin cavabınız : {selectedOption[index]} - {question.options[selectedOption[index]]}
+                     </p>
+                  </div>
+                })}
+             </div>
           )}
         </div>
       </div>

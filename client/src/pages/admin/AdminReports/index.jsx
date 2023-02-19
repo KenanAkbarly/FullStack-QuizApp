@@ -8,10 +8,13 @@ import { getAllReports } from '../../../apicalls/reports';
 import { message} from 'antd';
 import MaterialReactTable from 'material-react-table';
 import moment from 'moment';
+import { RiQuestionAnswerFill } from "react-icons/ri";
+import { FaUserGraduate } from "react-icons/fa";
 const AdminReports = () => {
     const [reportsData, setReportsData] = useState([]);
     console.log(reportsData);
     const dispatch = useDispatch()
+   
      const columns = useMemo(
       () => [
         {
@@ -73,6 +76,7 @@ const AdminReports = () => {
          <div className={styled.pageTitle}>
          <PageTitle title = {'Bütün istifadəçilərin nəticələri'}/>
          </div>
+
          <div className={styled.table_body}>
           <MaterialReactTable  displayColumnDefOptions={{
           'mrt-row-actions': {

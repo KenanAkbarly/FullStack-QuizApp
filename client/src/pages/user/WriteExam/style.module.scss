@@ -168,6 +168,54 @@ margin-top: 20px;
     }
 }
 
+.review_contanier{
+    width: 1000px;
+    margin: 0 auto;
+    // background-color: red;
+     padding: 20px 50px;
+     .correct_options_review{
+    /* From https://css.glass */
+background: rgba(26, 223, 10, 0.38);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5.1px);
+-webkit-backdrop-filter: blur(5.1px);
+border: 1px solid rgba(26, 223, 10, 0.52);
+padding: 10px 15px;
+margin-bottom: 10px;
+h1{
+    font-size: 20px;
+    color: rgb(63, 63, 63);
+}
+p{
+    font-size: 16px;
+    color: rgb(63, 63, 63);
+    margin-left: 25px;
+    margin-top: 5px;
+}
+     }
+     .wrong_options_review{
+/* From https://css.glass */
+background: rgba(223, 10, 10, 0.34);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(2px);
+-webkit-backdrop-filter: blur(2px);
+border: 1px solid rgba(223, 10, 10, 0.41);
+padding: 10px 15px;
+margin-bottom: 10px;
+h1{
+    font-size: 20px;
+    color: rgb(63, 63, 63);
+}
+p{
+    font-size: 16px;
+    color: rgb(63, 63, 63);
+    margin-left: 25px;
+    margin-top: 5px;
+}
+     }
+}
 
 @media screen and (max-width: 1200px) {
     .Instructions_body{
@@ -179,9 +227,51 @@ margin-top: 20px;
    .result_container{
     width: 690px !important;
    }
-
+   .review_contanier{
+    width: 690px !important;;
+   }
+}
+.result_btns{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    .respet_btn{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 5px 5px;
+        cursor: pointer;
+    }
+    .review_btn{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 5px 5px;
+        cursor: pointer;
+    }
 }
 @media screen and (max-width: 750px) {
+    .review_contanier{
+        width: 350px !important;
+        .correct_options_review{
+        padding: 10px 10px;
+            h1{
+                font-size: 16px;
+            }
+            p{
+                font-size:14px;
+            }
+        }
+        .wrong_options_review{
+            padding: 10px 10px;
+            h1{
+                font-size: 16px;
+            }
+            p{
+                font-size:14px;
+            }
+        }
+       }
     .Instructions_body{
         width: 310px !important;
     }
