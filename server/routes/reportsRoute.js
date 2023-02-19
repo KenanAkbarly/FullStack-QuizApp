@@ -46,7 +46,7 @@ router.post("/get-all-reports", authMiddleware, async (req, res) => {
 
 router.post("/get-all-reports-by-user", authMiddleware, async (req, res) => {
   try {
-    const reports = await Report.find({ user: req.body.userId });
+    const reports = await Report.find({ user: req.body.userId }).populate('exam').populate('user').sort({createdAt: -1});
     res.send({
       message: "Nəticə gətrildi",
       data: reports,

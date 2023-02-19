@@ -21,31 +21,31 @@ const columns = [
     label: 'Imtahan adı',
     id: 'name',
     minWidth: 170,
-    align: 'right',
+    align: 'center',
   },
   {
     label: 'İmtahan müddəti',
     id: 'duration',
     minWidth: 170,
-    align: 'right',
+    align: 'center',
   },
   {
     label: 'Imtahan kategoriyası',
     id: 'category',
     minWidth: 170,
-    align: 'right',
+    align: 'center',
   },
   {
     label: 'Maximum nəticə',
     id: 'totalMarks',
     minWidth: 170,
-    align: 'right',
+    align: 'center',
   },
   {
     label: 'Minimum nəticə',
     id: 'passingMarks',
     minWidth: 170,
-    align: 'right',
+    align: 'center',
 
   },
 
