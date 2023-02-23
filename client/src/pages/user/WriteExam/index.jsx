@@ -13,6 +13,24 @@ import { addReport } from "../../../apicalls/reports";
 import {Helmet} from "react-helmet";
 import { FiRepeat } from 'react-icons/fi';
 import { VscOpenPreview } from 'react-icons/vsc';
+function fancyTimeFormat(duration) {
+
+  const hrs = ~~(duration / 3600);
+  const mins = ~~((duration % 3600) / 60);
+  const secs = ~~duration % 60;
+
+  // Output like "1:01" or "4:03:59" or "123:03:59"
+  let ret = "";
+
+  if (hrs > 0) {
+    ret += "" + hrs + ":" + (mins < 10 ? "0" : "");
+  }
+
+  ret += "" + mins + ":" + (secs < 10 ? "0" : "");
+  ret += "" + secs;
+
+  return ret;
+}
 const WriteExam = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -24,7 +42,6 @@ const WriteExam = () => {
   const [selectedOption = [], setSelectedOption] = useState({});
   const [result = {}, setResult] = useState({});
   const [minute, setMinute] = useState(0);
-  const [second, setSecond] = useState(0);
   const [timeUp, setTimeUp] = useState(false);
   const [intervalId, setIntervalId] = useState(null);
   const { user } = useSelector((state) => state.users);
@@ -38,7 +55,7 @@ const WriteExam = () => {
       if (response.success) {
         setQuestions(response.data.questions);
         setExamData(response.data);
-        setMinute(response.data.duration);
+        setMinute(response.data.duration * 60);
       } else {
         message.error(response.message);
       }
@@ -91,17 +108,19 @@ const WriteExam = () => {
 
   const startTimer = () => {
     let totalMinute = examData.duration;
+    let totalSeconds = totalMinute * 60;
     const intervalId = setInterval(() => {
-      if (totalMinute > 0) {
-        totalMinute = totalMinute - 1;
-        setMinute(totalMinute);
-      } else {
+      if (totalSeconds > 0 ) {
+        totalSeconds = totalSeconds - 1;
+        setMinute(totalSeconds);
+      } 
+      else {
         setTimeUp(true);
       }
     }, 1000);
     setIntervalId(intervalId);
   };
-
+ 
   useEffect(() => {
     if (timeUp && view === "questions") {
       clearInterval(intervalId);
@@ -147,7 +166,7 @@ const WriteExam = () => {
                     {questions[selectedQuestionIndex] &&
                       questions[selectedQuestionIndex].name}
                   </h3>
-                  <p className={styled.timer}>{minute}</p>
+                  <p className={styled.timer}>{fancyTimeFormat(minute)} </p>
                 </div>
                 <div className={styled.option_body}>
                   {Object.keys(questions[selectedQuestionIndex].options).map(

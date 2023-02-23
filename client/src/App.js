@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import WriteExam from "./pages/user/WriteExam";
 import UserReports from "./pages/user/UserReports";
 import AdminReports from "./pages/admin/AdminReports";
+import Home from "./pages/Home";
 function App() {
   const { loading } = useSelector((state) => state.loader);
   return (
@@ -17,6 +18,7 @@ function App() {
       {loading && <Loader />}
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<Home/>} />
           {/* Common Routes */}
           <Route path="/register" element={<Register />} />
 

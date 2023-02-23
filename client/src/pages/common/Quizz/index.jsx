@@ -10,12 +10,14 @@ import PageTitle from "../../../components/PageTitle";
 import styled from "./style.module.scss";
 import { useNavigate } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
+import { toggleDarkMode } from "../../../redux/darkModeSlice/darkModeSlice";
 const Quizz = () => {
   const [exams, setExams] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.users);
   const [examName, setExamName] = useState("");
+  const {mode} = useSelector((state)=> state.darkMode)
   const handleChange = (event) => {
     setExamName(event.target.value);
   };
@@ -38,7 +40,7 @@ const Quizz = () => {
     getExams();
   }, []);
   return (
-    <div>
+    <div className={mode? styled.quizz_body: styled.dark_quizz_body}>
       <div className={styled.container}>
         <div className={styled.header_text}>
           <PageTitle
@@ -46,6 +48,7 @@ const Quizz = () => {
               user ? user.name : ""
             } , Quizlet Portalına Xoş Gəlmisən.`}
           />
+          <button onClick={()=> dispatch(toggleDarkMode())}>click</button>
         </div>
         <div className={styled.search_filter}>
           <div className={styled.search}>
@@ -73,6 +76,9 @@ const Quizz = () => {
               .map((exam) => {
                 return (
                   <div key={exam._id} className={styled.card}>
+                    {/* <div className={styled.card_logo}>
+                    <img src="https://dev-jobs-site.netlify.app/assets/logos/officelite.svg" alt="" />
+                    </div> */}
                     <h1>{exam.name}</h1>
                     <p className={styled.category}>
                       Kategorya : {exam.category}
@@ -83,7 +89,9 @@ const Quizz = () => {
                     <p className={styled.passingMark}>
                       Minimum nəticə : {exam.passingMarks}
                     </p>
-                    <p className={styled.duration}>Müddət : {exam.duration}</p>
+                    <p className={styled.duration}>
+                      Müddət : {exam.duration} dəqiqə
+                    </p>
                     <div className={styled.btn_body}>
                       <button
                         onClick={() => navigate(`/user/write-exam/${exam._id}`)}

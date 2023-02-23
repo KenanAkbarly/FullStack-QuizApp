@@ -18,6 +18,7 @@ const Index = ({menu}) => {
   const showModal = () => setModal(!modal);
   const navigate = useNavigate()
   const activeRoute = window.location.pathname
+  const {mode} = useSelector((state) => state.darkMode)
   const getIsActiveOrNot = (paths)=>{
       if(paths.includes(activeRoute)){
         return true
@@ -34,10 +35,11 @@ const Index = ({menu}) => {
   }
   return (
     <>
-     <div className={styled.navbar}>
+     <div className={mode? styled.navbar : styled.darkNavbar}>
+
         <div className={styled.container}>
           <div onClick={() => navigate('/quizz')} className={styled.navbar_left}>
-            <img src="https://png.pngtree.com/png-vector/20191021/ourmid/pngtree-black-quill-feather-pen-with-writing-line-vector-logo-design-png-image_1840025.jpg" alt="" />
+            <img src="https://www.shareicon.net/data/2015/08/19/87561_games_1042x1042.png" alt="" />
             <h1>Quizlet</h1>
           </div>
           <div className={styled.navbar_right}>
@@ -54,7 +56,7 @@ const Index = ({menu}) => {
               <p className={styled.user_name}><i class="ri-emotion-happy-line"></i>{user?.name}</p>
               <p onClick={ () => {
       localStorage.removeItem("token");
-        navigate("/login")
+        navigate("/")
       }} className={styled.items}><i className="ri-logout-box-line"></i>Çıxış</p>   
              </div>
              </p>
@@ -66,7 +68,7 @@ const Index = ({menu}) => {
         <IconContext.Provider value={{ color: '#253858' }}>
           <div className={styled.hamburger_menu}>
             <div onClick={() => navigate('/quizz')} className={styled.ham_menu_navbar_left}>
-              <img src="https://png.pngtree.com/png-vector/20191021/ourmid/pngtree-black-quill-feather-pen-with-writing-line-vector-logo-design-png-image_1840025.jpg" alt="" />
+              <img src="https://www.shareicon.net/data/2015/08/19/87561_games_1042x1042.png" alt="" />
               <h1>Quizlet</h1>
             </div>
             <Link to='#' className={styled.menu_bars}>
@@ -94,7 +96,7 @@ const Index = ({menu}) => {
               <p className={styled.nav_text}>
               <p onClick={ () => {
       localStorage.removeItem("token");
-        navigate("/login")
+        navigate("/")
       }} className={styled.nav_items_user}><i className="ri-logout-box-line"></i><span>Çıxış</span></p>
       </p>
             </ul>

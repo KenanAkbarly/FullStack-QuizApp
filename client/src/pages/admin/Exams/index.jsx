@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import PageTitle from '../../../components/PageTitle'
 import style from './style.module.scss'
 import { message } from 'antd'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { HideLoading, ShowLoading } from '../../../redux/loaderSlice/loaderSlice'
 import { deleteExamById, getAllExams } from '../../../apicalls/exmas'
 import { FiEdit3 } from 'react-icons/fi';
@@ -57,7 +57,7 @@ const Exams = () => {
   console.log('exams',exams)
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-
+  const {mode} = useSelector((state)=> state.darkMode)
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -105,7 +105,7 @@ const Exams = () => {
     getExamsData();
   }, [])
   return (
-    <div >
+    <div className={mode? style.addEditExam_body: style.darkaddEditExam_body}>
       <div >
         <div className={style.exams_header}>
           <PageTitle title="İmtahanlar" />
