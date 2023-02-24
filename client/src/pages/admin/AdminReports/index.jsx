@@ -2,19 +2,16 @@ import React, { useEffect, useState, useMemo  } from 'react'
 import PageTitle from '../../../components/PageTitle'
 import {Helmet} from "react-helmet";
 import styled from './style.module.scss'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { HideLoading, ShowLoading } from '../../../redux/loaderSlice/loaderSlice';
 import { getAllReports } from '../../../apicalls/reports';
 import { message} from 'antd';
 import MaterialReactTable from 'material-react-table';
-import moment from 'moment';
-import { RiQuestionAnswerFill } from "react-icons/ri";
-import { FaUserGraduate } from "react-icons/fa";
 const AdminReports = () => {
     const [reportsData, setReportsData] = useState([]);
     console.log(reportsData);
     const dispatch = useDispatch()
-   
+    const {mode} = useSelector((state)=> state.darkMode)
      const columns = useMemo(
       () => [
         {
@@ -71,7 +68,9 @@ const AdminReports = () => {
         getData();
       },[])
   return (
-    <div className={styled.result_body}>
+    <div 
+    style={mode? {backgroundColor:'rgb(244, 244, 244)'}:{backgroundColor:'#121721'}} 
+    className={styled.result_body}>
         <div className={styled.result_container}>
          <div className={styled.pageTitle}>
          <PageTitle title = {'Bütün istifadəçilərin nəticələri'}/>
