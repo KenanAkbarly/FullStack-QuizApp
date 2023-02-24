@@ -10,6 +10,7 @@ import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import { IconContext } from 'react-icons';
 import 'remixicon/fonts/remixicon.css'
+import Switch from '../Switch'
 const Index = ({menu}) => {
   const { user } = useSelector((state) => state.users)
   const [sidebar, setSidebar] = useState(false);
@@ -35,17 +36,21 @@ const Index = ({menu}) => {
   }
   return (
     <>
-     <div className={mode? styled.navbar : styled.darkNavbar}>
-
-        <div className={styled.container}>
+     <div style={mode? {backgroundColor:'rgb(244, 244, 244)'}:{backgroundColor:'#121721'}} className={styled.navbar}>
+     <div className={styled.switch_contanier}>
+       <div className={styled.switch_body}>
+          <Switch/>
+          </div>
+       </div>
+        <div style={mode? {backgroundColor:'white'}:{backgroundColor:"#19202D"}} className={styled.container}>
           <div onClick={() => navigate('/quizz')} className={styled.navbar_left}>
             <img src="https://www.shareicon.net/data/2015/08/19/87561_games_1042x1042.png" alt="" />
-            <h1>Quizlet</h1>
+            <h1 style={mode? {color:'#253858'}:{color:'#264e93'}}>Quizlet</h1>
           </div>
-          <div className={styled.navbar_right}>
+          <div style={mode? {color:'#253858'}:{color:'#264e93'}} className={styled.navbar_right}>
             {
               menu.map((item, index) => {
-                return <div key={index} className={ `${ getIsActiveOrNot(item.paths) && styled.active_route}`}>
+                return <div key={index} className={ `${ getIsActiveOrNot(item.paths) && styled.Dark_active_route}`}>
                   <p className={styled.items} onClick={() => item.onClick()}>{item.icon} <span>{item.title}</span></p>
                 </div>
               })
@@ -63,19 +68,24 @@ const Index = ({menu}) => {
           </div>
         </div>
       </div>
-      <div className={styled.ham_menu}>
 
-        <IconContext.Provider value={{ color: '#253858' }}>
-          <div className={styled.hamburger_menu}>
+      <div style={mode? {backgroundColor:'rgb(244, 244, 244)'}:{backgroundColor:'#121721'}} className={styled.ham_menu}>
+       <div className={styled.switch_contanier}>
+       <div className={styled.switch_body}>
+          <Switch/>
+          </div>
+       </div>
+        <IconContext.Provider value={mode?{color: '#253858' }:{color:'#264e93'}}>
+          <div  style={mode? {backgroundColor:'white'}:{backgroundColor:'#19202D'}} className={styled.hamburger_menu}>
             <div onClick={() => navigate('/quizz')} className={styled.ham_menu_navbar_left}>
               <img src="https://www.shareicon.net/data/2015/08/19/87561_games_1042x1042.png" alt="" />
-              <h1>Quizlet</h1>
+              <h1 style={mode? {color:'#253858'}:{color:'#264e93'}}>Quizlet</h1>
             </div>
             <Link to='#' className={styled.menu_bars}>
               <FaIcons.FaBars onClick={showSidebar} />
             </Link>
           </div>
-          <nav className={sidebar ? styled.active : styled.nav_menu}>
+          <nav style={mode? {backgroundColor:'white'} : {backgroundColor:"#19202D"}} className={sidebar ? styled.active : styled.nav_menu}>
             <ul className={styled.nav_menu_items} onClick={showSidebar}>
               <li className={styled.navbar_toggle}>
                 <Link to='#' className={styled.menu_bars}>
@@ -85,19 +95,19 @@ const Index = ({menu}) => {
               {
                 menu.map((item, index) => {
                   return <div key={index} className={styled.nav_text}>
-                    <p className={styled.nav_items} onClick={() => item.onClick()}>{item.icon} <span>{item.title}</span></p>
+                    <p style={mode? {color:'#253858'}:{color:'#264e93'}} className={styled.nav_items} onClick={() => item.onClick()}>{item.icon} <span className={styled.span}>{item.title}</span></p>
                   </div>
                 })
               }
               
               <p className={styled.nav_text}>
-              <p onClick={ () => navigate("/profile")} className={styled.nav_items_user} >{user?.isAdmin? <i class="ri-admin-line"></i>:<i className="ri-user-line"></i> }<span>{user?.isAdmin? 'Admin':'User'}</span></p>
+              <p style={mode? {color:'#253858'}:{color:'#264e93'}} onClick={ () => navigate("/profile")} className={styled.nav_items_user} >{user?.isAdmin? <i class="ri-admin-line"></i>:<i className="ri-user-line"></i> }<span className={styled.span}>{user?.isAdmin? 'Admin':'User'}</span></p>
               </p>
               <p className={styled.nav_text}>
-              <p onClick={ () => {
+              <p style={mode? {color:'#253858'}:{color:'#264e93'}} onClick={ () => {
       localStorage.removeItem("token");
         navigate("/")
-      }} className={styled.nav_items_user}><i className="ri-logout-box-line"></i><span>Çıxış</span></p>
+      }} className={styled.nav_items_user}><i className="ri-logout-box-line"></i><span className={styled.span}>Çıxış</span></p>
       </p>
             </ul>
           </nav>

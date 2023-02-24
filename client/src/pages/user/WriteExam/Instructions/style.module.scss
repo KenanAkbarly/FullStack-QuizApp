@@ -1,3 +1,6 @@
+.inc_body{
+  width: 100%;
+}
 .Instructions_body{
     display: flex;
     flex-direction: column;
@@ -45,7 +48,7 @@
             height: 40px;
             &:hover{
                 background-color: #5aa2f5;
-                color: white;
+                color: white !important;
                 border: 2px solid transparent;
                 cursor: pointer;
             }

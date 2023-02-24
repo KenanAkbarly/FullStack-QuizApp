@@ -10,7 +10,6 @@ import PageTitle from "../../../components/PageTitle";
 import styled from "./style.module.scss";
 import { useNavigate } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
-import { toggleDarkMode } from "../../../redux/darkModeSlice/darkModeSlice";
 const Quizz = () => {
   const [exams, setExams] = useState([]);
   const navigate = useNavigate();
@@ -42,16 +41,15 @@ const Quizz = () => {
   return (
     <div className={mode? styled.quizz_body: styled.dark_quizz_body}>
       <div className={styled.container}>
-        <div className={styled.header_text}>
+        <div style={mode?{color:'#253858'}:{color:'#456cb0'}} className={styled.header_text }>
           <PageTitle
             title={`Salam  ${
               user ? user.name : ""
             } , Quizlet Portalına Xoş Gəlmisən.`}
           />
-          <button onClick={()=> dispatch(toggleDarkMode())}>click</button>
         </div>
         <div className={styled.search_filter}>
-          <div className={styled.search}>
+          <div style={mode? {backgroundColor:'',border:'1px solid rgb(180, 180, 180)',color:" #253858"}:{backgroundColor:"#19202D",border:'1px solid #1e3664',color:" #9c9c9c"}} className={styled.search}>
             <FiSearch />
             <input
               value={examName}
@@ -75,11 +73,10 @@ const Quizz = () => {
               })
               .map((exam) => {
                 return (
-                  <div key={exam._id} className={styled.card}>
-                    {/* <div className={styled.card_logo}>
-                    <img src="https://dev-jobs-site.netlify.app/assets/logos/officelite.svg" alt="" />
-                    </div> */}
-                    <h1>{exam.name}</h1>
+                  <div style={mode? {backgroundColor:'white'}: {backgroundColor:"#19202D"}} key={exam._id} className={styled.card }>
+                    <h1
+                    style={mode? {color:'black'}:{color:'white'}}
+                    >{exam.name}</h1>
                     <p className={styled.category}>
                       Kategorya : {exam.category}
                     </p>
@@ -94,6 +91,7 @@ const Quizz = () => {
                     </p>
                     <div className={styled.btn_body}>
                       <button
+                      style={mode? {border:'2px solid  #253858',color:" #253858"} :{border: "2px solid #264e93",color: "#264e93"}}
                         onClick={() => navigate(`/user/write-exam/${exam._id}`)}
                       >
                         İmtahana Başla

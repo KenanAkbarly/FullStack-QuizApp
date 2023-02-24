@@ -45,6 +45,8 @@ const WriteExam = () => {
   const [timeUp, setTimeUp] = useState(false);
   const [intervalId, setIntervalId] = useState(null);
   const { user } = useSelector((state) => state.users);
+  const {mode} = useSelector((state) => state.darkMode)
+
   const getExamData = async () => {
     try {
       dispatch(ShowLoading());
@@ -135,9 +137,9 @@ const WriteExam = () => {
   }, []);
   return (
     examData && (
-      <div className={styled.writeExam_body}>
+      <div style={mode? {backgroundColor:'rgb(244, 244, 244)'}:{backgroundColor:'#121721'}} className={styled.writeExam_body}>
         <div className={styled.header_text}>
-          <h1>{examData.name}</h1>
+          <h1  style={mode? {color:'#253858'}:{color:'#264e93'}}>{examData.name}</h1>
         </div>
 
         {view === "instructions" && (
@@ -151,17 +153,13 @@ const WriteExam = () => {
         <div className={styled.writeExam}>
           {view === "questions" && (
             <div className={styled.question_body}>
-              {/* <div className={styled.question_count}>
-               
-           
-              </div> */}
-              <div className={styled.question_option}>
+              <div style={mode? {backgroundColor:'white'}:{backgroundColor:"#19202D"}} className={styled.question_option}>
               <Helmet>
                 <meta charSet="utf-8" />
                 <title>{examData.name}</title>
             </Helmet>
                 <div className={styled.text_timer}>
-                  <h3>
+                  <h3 style={mode? {color:'#253858'}:{color:'#264e93'}}>
                     {selectedQuestionIndex + 1}.{" "}
                     {questions[selectedQuestionIndex] &&
                       questions[selectedQuestionIndex].name}
@@ -199,6 +197,7 @@ const WriteExam = () => {
                 <div className={styled.next_previous_btns}>
                   {selectedQuestionIndex > 0 && (
                     <button
+                    style={mode? {border:'2px solid  #253858',color:'#253858'}:{border:'2px solid  #264e93',color:'white'}}
                       className={styled.previous_btn}
                       onClick={() => {
                         setSelectedQuestionIndex(selectedQuestionIndex - 1);
@@ -209,6 +208,7 @@ const WriteExam = () => {
                   )}
                   {selectedQuestionIndex < questions.length - 1 && (
                     <button
+                    style={mode? {backgroundColor:'#253858'}:{backgroundColor:'#264E93'}}
                       className={styled.next_btn}
                       onClick={() => {
                         setSelectedQuestionIndex(selectedQuestionIndex + 1);
@@ -237,7 +237,7 @@ const WriteExam = () => {
           {view === "result" && (
             <div className={styled.result_container}>
               <div className={styled.result_items}>
-                <h1>Imtahan Nəticəsi</h1>
+                <h1>İmtahan Nəticəsi</h1>
                 <div className={styled.marks}>
                   <p>Umimi Sual : {examData.totalMarks}</p>
                   <p>Düzgün cavab sayı: {result.correctAnswer.length}</p>
@@ -250,6 +250,7 @@ const WriteExam = () => {
                 </div>
                 <div className={styled.result_btns}>
                   <button
+                   style={mode? {border:'2px solid  #253858',color:'#253858'}:{border:'2px solid  #0e5be0',color:'white',backgroundColor:"#0e5be0"}}
                   className={styled.respet_btn}
                    onClick={()=>{
                     setView("instructions");
@@ -259,6 +260,7 @@ const WriteExam = () => {
                    }}
                   ><FiRepeat/> İmtahanı təkrarla</button>
                   <button
+                  style={mode? {border:'2px solid  #03CECA',color:'#095a59'}:{border:'2px solid  #03CECA',color:'white',backgroundColor:"#03CECA"}}
                   className={styled.review_btn}
                   onClick={()=>{
                     setView('review')
@@ -294,13 +296,19 @@ const WriteExam = () => {
                 {questions.map((question, index) =>{
                   const isCorrect = question.correctOption === selectedOption[index]
                   return <div className={`${isCorrect? styled.correct_options_review : styled.wrong_options_review}`}>
-                     <h1>
+                     <h1
+                     style={mode? {color:'rgb(63, 63, 63)'}:{color:'black'}}
+                     >
                       {index + 1} : {question.name}
                      </h1>
-                     <p>
+                     <p
+                     style={mode? {color:'rgb(63, 63, 63)'}:{color:'white'}}
+                     >
                       Düzgün cavab : {question.correctOption} - {question.options[question.correctOption]}
                      </p>
-                     <p>
+                     <p
+                     style={mode? {color:'rgb(63, 63, 63)'}:{color:'white'}}
+                     >
                       Sizin cavabınız : {selectedOption[index]} - {question.options[selectedOption[index]]}
                      </p>
                   </div>
