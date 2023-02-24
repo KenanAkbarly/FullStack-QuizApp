@@ -349,6 +349,7 @@ const AddEditExams = () => {
                         </div>
                       ) : null}
                     </div>
+                    <div className={styled.addExam_btns}>
                     <button
                       className={styled.cancelBtn}
                       type="button"
@@ -359,6 +360,7 @@ const AddEditExams = () => {
                     <button className={styled.addBtn} type="submit">
                       Əlavə et
                     </button>
+                    </div>
                   </div>
                 </div>
               </TabPane>
@@ -366,6 +368,7 @@ const AddEditExams = () => {
                 <TabPane tab="Imtahan Suallari" key="2">
                   <div className={styled.qustion_header}>
                     <button
+                     style={mode? {border:'2px solid  #253858',color:" #253858"} :{border: "2px solid #264e93",color: "#264e93"}}
                       type="button"
                       className={styled.add_question_btn}
                       onClick={() => setShowAddEditQuestionModal(true)}

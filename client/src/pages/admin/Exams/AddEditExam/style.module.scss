@@ -14,7 +14,6 @@
     .form_body {
         width: 100%;
         margin: 0 auto;
-        // background-color: white;
         border-radius: 10px;
         padding: 10px 30px;
         .tab_pane1{
@@ -117,9 +116,9 @@
     .add_question_btn{
         display: flex;
         align-items: center;
-        border: 2px solid #253858;
+        // border: 2px solid #253858;
         background-color: transparent;
-        color: #253858;
+        // color: #253858;
         padding: 5px 10px;
         font-weight: 500;
         font-size: 16px;
@@ -175,83 +174,32 @@
 }
 
 @media screen and (max-width: 1200px) {
-    .Instructions_body{
-        width: 400px !important;
+
+    .addExam_body{
+        width: 690px !important;
     }
-   .question_body{
-    width: 690px !important;
-   }
-   .result_container{
-    width: 690px !important;
-   }
-   .review_contanier{
-    width: 690px !important;;
-   }
 }
 
 @media screen and (max-width: 750px) {
-    .review_contanier{
+  
+    .addExam_body{
         width: 350px !important;
-        .correct_options_review{
-        padding: 10px 10px;
-            h1{
-                font-size: 16px;
-            }
-            p{
-                font-size:14px;
-            }
-        }
-        .wrong_options_review{
-            padding: 10px 10px;
-            h1{
-                font-size: 16px;
-            }
-            p{
-                font-size:14px;
-            }
-        }
-       }
-    .Instructions_body{
-        width: 310px !important;
     }
-    .question_body{
-        width: 350px !important;
-       }
-   .question_option{
-    
-   }
-   .option{
-
-       width: 290px !important;
-   }
-   .Selectedoption{
-    width: 290px !important;
-   }
-   .result_container{
-    width: 350px !important;
-    .result_items{
-        width: 100% !important;
+    .inp_body{
+        width: 300px !important;
     }
-    flex-direction: column;
-    h1{
-        margin-bottom: 20px;
-        text-align: center;
+    .addBtn{
+        margin-left: 0 !important;
     }
-    p{
-        margin-left: 20px;
-    }
-    .result_btns{
+    .addExam_btns{
+        display: flex;
         flex-direction: column;
-         margin-left: 20px;
         button{
-            width: 150px;
+            width: 120px !important;
+            height: 30px !important;
         }
     }
-
-}
- .lottie_animation{
-            width: 100% !important;
-            height: 300px;
-        }
-
+    input{
+        font-size: 14px !important;
+    }
 }
