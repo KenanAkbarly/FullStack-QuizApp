@@ -109,7 +109,9 @@ const Exams = () => {
       <div >
         <div className={style.exams_header}>
           <PageTitle title="İmtahanlar" />
-          <button className={style.add_button} onClick={() => navigate('/admin/exams/add')}>
+          <button
+          style={mode? {border:'2px solid  #253858',color:" #253858"} :{border: "2px solid #264e93",color: "#264e93"}}
+          className={style.add_button} onClick={() => navigate('/admin/exams/add')}>
             <i className='ri-add-line'></i>
             Imtahan əlavə et
           </button>
