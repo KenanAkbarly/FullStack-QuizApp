@@ -1,17 +1,20 @@
+.edit_body{
+    width: 100%;
+}
 .addExam_body {
     width: 1200px;
     margin: 0 auto;
-
+    padding-bottom: 50px;
     .addExam_text {
-        margin-top: 30px;
-        margin-bottom: 20px;
+        padding-top: 50px;
+        padding-bottom: 20px;
         color: #253858;
     }
 
     .form_body {
         width: 100%;
         margin: 0 auto;
-        background-color: white;
+        // background-color: white;
         border-radius: 10px;
         padding: 10px 30px;
         .tab_pane1{
@@ -68,7 +71,7 @@
                 margin-top: 4px;
             }
             .exam_name {
-                color: #253858;
+                // color: #253858;
                 font-weight: 500;
                 font-size: 18px;
                 margin-bottom: 5px;
@@ -92,11 +95,11 @@
                     height: 35px;
                     border: none;
                     font-size: 18px;
-
+                    background-color: transparent;
                     &::placeholder {
                         font-size: 16px;
                         font-style: italic;
-                        color: #253858;
+                        color: #264e93;
 
                     }
 
@@ -169,4 +172,86 @@
 
 .table{
     margin-top: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+    .Instructions_body{
+        width: 400px !important;
+    }
+   .question_body{
+    width: 690px !important;
+   }
+   .result_container{
+    width: 690px !important;
+   }
+   .review_contanier{
+    width: 690px !important;;
+   }
+}
+
+@media screen and (max-width: 750px) {
+    .review_contanier{
+        width: 350px !important;
+        .correct_options_review{
+        padding: 10px 10px;
+            h1{
+                font-size: 16px;
+            }
+            p{
+                font-size:14px;
+            }
+        }
+        .wrong_options_review{
+            padding: 10px 10px;
+            h1{
+                font-size: 16px;
+            }
+            p{
+                font-size:14px;
+            }
+        }
+       }
+    .Instructions_body{
+        width: 310px !important;
+    }
+    .question_body{
+        width: 350px !important;
+       }
+   .question_option{
+    
+   }
+   .option{
+
+       width: 290px !important;
+   }
+   .Selectedoption{
+    width: 290px !important;
+   }
+   .result_container{
+    width: 350px !important;
+    .result_items{
+        width: 100% !important;
+    }
+    flex-direction: column;
+    h1{
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    p{
+        margin-left: 20px;
+    }
+    .result_btns{
+        flex-direction: column;
+         margin-left: 20px;
+        button{
+            width: 150px;
+        }
+    }
+
+}
+ .lottie_animation{
+            width: 100% !important;
+            height: 300px;
+        }
+
 }

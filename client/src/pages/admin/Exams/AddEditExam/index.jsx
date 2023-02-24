@@ -16,7 +16,7 @@ import {
   getExamById,
 } from "../../../../apicalls/exmas";
 import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   HideLoading,
   ShowLoading,
@@ -31,6 +31,7 @@ import { Table } from "antd";
 const AddEditExams = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const {mode} = useSelector((state)=> state.darkMode)
   const [examData, setExamData] = useState([]);
   const [showAddEditQuestionModal, setShowAddEditQuestionModal] =
     useState(false);
@@ -201,23 +202,34 @@ const AddEditExams = () => {
     },
   ];
   return (
-    <div className={styled.addExam_body}>
+    <div
+    style={mode? {backgroundColor:'rgb(244, 244, 244)'}:{backgroundColor:'#121721'}} 
+    className={styled.edit_body}>
+       <div 
+    className={styled.addExam_body}>
       <div className={styled.addExam_text}>
         <PageTitle
           title={params.id ? "Imtahan düzəlişi" : "Imtahan əlavə et"}
         />
       </div>
-      <div className={styled.form_body}>
+      <div
+      style={mode? {backgroundColor:'white'}:{backgroundColor:"#131e32"}}
+      className={styled.form_body}>
         {(examData || !params.id) && (
           <form onSubmit={formik.handleSubmit}>
             <Tabs defaultActiveKey="1">
               <TabPane tab="Imtahan Təfərrüatı" key="1">
                 <div className={styled.tab_pane1}>
-                  <div className={styled.inp_name_body}>
-                    <p className={styled.exam_name}>Imtahan adı</p>
+                  <div
+                  style={mode? {color:'#253858'}:{color:'white'}}
+                  className={styled.inp_name_body}>
+                    <p 
+                     style={mode? {color:'#253858'}:{color:'#264e93'}}
+                    className={styled.exam_name}>Imtahan adı</p>
                     <div className={styled.inp_body}>
                       <MdOutlineDriveFileRenameOutline />
                       <input
+                      style={mode? {color:'#253858'}:{color:'white'}}
                         id="name"
                         name="name"
                         type="text"
@@ -233,10 +245,15 @@ const AddEditExams = () => {
                   </div>
 
                   <div className={styled.inp_name_body}>
-                    <p className={styled.exam_name}>Imtahan müddəti</p>
-                    <div className={styled.inp_body}>
+                    <p 
+                     style={mode? {color:'#253858'}:{color:'#264e93'}}
+                    className={styled.exam_name}>Imtahan müddəti</p>
+                    <div 
+                    style={mode? {color:'#253858'}:{color:'white'}}
+                    className={styled.inp_body}>
                       <GiDuration />
                       <input
+                      style={mode? {color:'#253858'}:{color:'white'}}
                         id="duration"
                         name="duration"
                         type="number"
@@ -254,10 +271,15 @@ const AddEditExams = () => {
                   </div>
 
                   <div className={styled.inp_name_body}>
-                    <p className={styled.exam_name}>Imtahan kategoriyası</p>
-                    <div className={styled.inp_body}>
+                    <p 
+                     style={mode? {color:'#253858'}:{color:'#264e93'}}
+                    className={styled.exam_name}>Imtahan kategoriyası</p>
+                    <div 
+                    style={mode? {color:'#253858'}:{color:'white'}}
+                    className={styled.inp_body}>
                       <BiCategoryAlt />
                       <input
+                      style={mode? {color:'#253858'}:{color:'white'}}
                         id="category"
                         name="category"
                         type="text"
@@ -275,10 +297,15 @@ const AddEditExams = () => {
                   </div>
 
                   <div className={styled.inp_name_body}>
-                    <p className={styled.exam_name}>Maximum nəticə</p>
-                    <div className={styled.inp_body}>
+                    <p 
+                     style={mode? {color:'#253858'}:{color:'#264e93'}}
+                    className={styled.exam_name}>Maximum nəticə</p>
+                    <div
+                    style={mode? {color:'#253858'}:{color:'white'}}
+                    className={styled.inp_body}>
                       <SiVirustotal />
                       <input
+                      style={mode? {color:'#253858'}:{color:'white'}}
                         id="totalMarks"
                         name="totalMarks"
                         type="number"
@@ -297,10 +324,15 @@ const AddEditExams = () => {
 
                   <div>
                     <div className={styled.inp_name_body}>
-                      <p className={styled.exam_name}>Minimum nəticə</p>
-                      <div className={styled.inp_body}>
+                      <p 
+                       style={mode? {color:'#253858'}:{color:'#264e93'}}
+                      className={styled.exam_name}>Minimum nəticə</p>
+                      <div 
+                      style={mode? {color:'#253858'}:{color:'white'}}
+                      className={styled.inp_body}>
                         <VscPass />
                         <input
+                        style={mode? {color:'#253858'}:{color:'white'}}
                           id="passingMarks"
                           name="passingMarks"
                           type="number"
@@ -364,6 +396,7 @@ const AddEditExams = () => {
           setSelcetedQuestion={setSelcetedQuestion}
         />
       )}
+    </div>
     </div>
   );
 };
