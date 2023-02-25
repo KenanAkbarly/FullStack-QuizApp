@@ -50,10 +50,12 @@ const Login = () => {
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
       <div className={styled.header}>
-        <img src="https://png.pngtree.com/png-vector/20191021/ourmid/pngtree-black-quill-feather-pen-with-writing-line-vector-logo-design-png-image_1840025.jpg" alt="" />
+        <img src="https://www.shareicon.net/data/2015/08/19/87561_games_1042x1042.png" alt="" />
         <h1>Quizlet</h1>
       </div>
       <div className={styled.login}>
+        <div className={styled.login_right}>
+        </div>
         <div className={styled.login_left}>
           <form onSubmit={formik.handleSubmit}>
             <h2>Login</h2>
@@ -67,11 +69,11 @@ const Login = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.email}
-              />
+                />
 
             </div>
-            {formik.touched.email && formik.errors.email ? (
-              <span className={styled.requried}>{formik.errors.email}</span>
+                {formik.touched.email && formik.errors.email ? (
+                  <span className={styled.requried}>{formik.errors.email}</span>
             ) : null}
             <div className={styled.inp_body}>
               <RiLockPasswordLine />
@@ -95,9 +97,7 @@ const Login = () => {
             </Link>
           </form>
         </div>
-        <div className={styled.login_right}>
-
-        </div>
+        
       </div>
     </div>
   )

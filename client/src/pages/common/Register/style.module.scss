@@ -13,11 +13,13 @@
         align-items: center;
         color: #253858;
         font-size: 22px;
- 
+        display: flex;
+        align-items: center;
+        gap: 5px;
         img{
-            width: 70px;
-            height: 70px;
-            mix-blend-mode: color-burn;
+            width: 50px;
+            height: 50px;
+
         }
     }
     .login{
@@ -104,4 +106,19 @@
             // object-fit: cover;
         }
     }
+}
+@media screen and (max-width: 750px) {
+    .login{
+        width: 350px !important;
+        flex-direction: column;
+        align-items: center;
+    }
+    .login_left{
+        width: 100% !important;
+    }
+    .login_right{
+        width: 100% !important;
+        height: 150px !important;
+    }
+  
 }
