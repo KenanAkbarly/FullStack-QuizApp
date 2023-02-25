@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import styled from './style.module.scss'
+import ScrollToTop from "react-scroll-to-top";
 const Footer = () => {
   const {mode} = useSelector((state) => state.darkMode)
   const navigate = useNavigate()
@@ -11,6 +12,7 @@ const Footer = () => {
      <footer 
       style={mode? {backgroundColor:'#25303F'}:{backgroundColor:'#222222'}}
      className={styled.footer__home}>
+        <ScrollToTop smooth top='60' />
         <div className={styled.footer__container}>
             <div className={styled.footer_content}>
              <div className={styled.footer_left}>
@@ -35,7 +37,7 @@ const Footer = () => {
             <div
             style={mode? { borderTop:" 1px solid #858584"}:{ borderTop:" 1px solid #d4d4d437"}}
             className={styled.footer__bottom}>
-                <p>Ⓒ Quizlet Quiz Portal</p>
+                <p>Ⓒ Quizlet Quizz Portalı</p>
             </div>
         </div>
     </footer>

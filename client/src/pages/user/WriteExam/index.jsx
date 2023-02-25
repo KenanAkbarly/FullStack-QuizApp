@@ -13,6 +13,7 @@ import { addReport } from "../../../apicalls/reports";
 import {Helmet} from "react-helmet";
 import { FiRepeat } from 'react-icons/fi';
 import { VscOpenPreview } from 'react-icons/vsc';
+import { AiOutlineHome } from 'react-icons/ai';
 function fancyTimeFormat(duration) {
 
   const hrs = ~~(duration / 3600);
@@ -313,6 +314,15 @@ const WriteExam = () => {
                      </p>
                   </div>
                 })}
+                <div className={styled.result_btns}>
+                  
+                  <button
+                  style={mode? {border:'2px solid  #000',color:'#fff'}:{border:'2px solid  #035ece',color:'white',backgroundColor:"#035ece"}}
+                  className={styled.close_btn}
+                  onClick={()=>{
+                    navigate("/quizz");
+                  }}><AiOutlineHome/> Əsas səhifə</button>
+                </div>
              </div>
           )}
         </div>

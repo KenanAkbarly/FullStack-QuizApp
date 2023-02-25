@@ -7,9 +7,7 @@ const Home = () => {
       <button
       onClick={()=> {window.location.href = '/login'}}
       >
-        login
-      
-        
+        login  
       </button>
       <button  onClick={()=>{window.location.href = '/register'}}>
         register

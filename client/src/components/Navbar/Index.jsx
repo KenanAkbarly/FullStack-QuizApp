@@ -58,7 +58,7 @@ const Index = ({menu}) => {
              <p onClick={showModal} className={modal? styled.modal_items: styled.items} >{user?.isAdmin? <i class="ri-admin-line"></i>:<i className="ri-user-line"></i> }<span>{user?.isAdmin? 'Admin':'User'}</span>
 
              <div 
-             style={mode? {backgroundColor:'white'}:{backgroundColor:"#19202D"}}
+             style={mode? {backgroundColor:'white'}:{backgroundColor:"#14213a"}}
              className={modal? styled.active_modal : styled.none_modal}>
               <p 
               style={mode? {color:'#253858'}:{color:'#264e93'}}

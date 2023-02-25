@@ -7,6 +7,7 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { BsGithub } from "react-icons/bs";
 import emailjs from "@emailjs/browser";
 import toast, { Toaster } from 'react-hot-toast';
+import ScrollToTop from "react-scroll-to-top";
 const Footer = () => {
   const { mode } = useSelector((state) => state.darkMode);
   const navigate = useNavigate();
@@ -41,6 +42,7 @@ const Footer = () => {
               'aria-live': 'polite',
             },
           });
+          e.target.reset()
         }, (error) => {
             console.log(error.text);
             toast('Mesaj göndərilmedi', {
@@ -76,6 +78,7 @@ const Footer = () => {
         }
         className={styled.footer__home}
       >
+        <ScrollToTop smooth top='60' />
         <div className={styled.footer__container}>
           <div className={styled.footer_content}>
             <div className={styled.footer_left_body}>
@@ -95,7 +98,7 @@ const Footer = () => {
                     <a
                       href="https://www.instagram.com/kenanakbarly/?hl=ru"
                       className={styled.insta}
-                      title="Join us on Instagram"
+                      title="İnstagram-da bizə qoşulun"
                     >
                       <i>
                         <AiOutlineInstagram />
@@ -104,7 +107,7 @@ const Footer = () => {
                     <a
                       href="https://www.linkedin.com/in/kenan-akbarly-a815b222a/"
                       className={styled.in}
-                      title="Join us on LinkedIn"
+                      title="Linkedİn-də bizə qoşulun"
                     >
                       <i>
                         <FaLinkedinIn />
@@ -113,7 +116,7 @@ const Footer = () => {
                     <a
                       href="https://github.com/KenanAkbarly"
                       className={styled.github}
-                      title="Join us on GitHub"
+                      title="Github-da bizə qoşulun"
                     >
                       <i>
                         <BsGithub />
@@ -133,7 +136,7 @@ const Footer = () => {
               <form ref={form} onSubmit={sendEmail}>
                 <div className={styled.inp_body}>
                     <AiOutlineUser/>
-                <input placeholder="Istifadeci adi" type="text" name="user_name" />
+                <input placeholder="İstifadəçi adı" type="text" name="user_name" />
                 </div>
                 <div className={styled.inp_body}>
                     <AiOutlineMail/>
@@ -157,7 +160,7 @@ const Footer = () => {
             }
             className={styled.footer__bottom}
           >
-            <p>Ⓒ Quizlet Quiz Portal</p>
+            <p>Ⓒ Quizlet Quizz Portalı</p>
           </div>
         </div>
         <Toaster />
