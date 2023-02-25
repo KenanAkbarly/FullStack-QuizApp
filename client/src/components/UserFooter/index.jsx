@@ -2,10 +2,11 @@ import React, { useRef } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "./style.module.scss";
-import { AiOutlineInstagram } from "react-icons/ai";
+import { AiOutlineInstagram ,AiOutlineUser, AiOutlineMail} from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 import { BsGithub } from "react-icons/bs";
 import emailjs from "@emailjs/browser";
+import toast, { Toaster } from 'react-hot-toast';
 const Footer = () => {
   const { mode } = useSelector((state) => state.darkMode);
   const navigate = useNavigate();
@@ -17,11 +18,56 @@ const Footer = () => {
     emailjs.sendForm('service_av4v13g', 'template_tc6z19i', form.current, 'hyuIMQftk4iaBZx3B')
       .then((result) => {
           console.log(result.text);
+          toast('Mesaj göndərildi', {
+            duration: 4000,
+            position: 'top-center',
           
-      }, (error) => {
-          console.log(error.text);
-      });
-  };
+            // Styling
+            style: {},
+            className: '',
+          
+            // Custom Icon
+            icon: '📨',
+          
+            // Change colors of success/error/loading icon
+            iconTheme: {
+              primary: '#000',
+              secondary: '#fff',
+            },
+          
+            // Aria
+            ariaProps: {
+              role: 'status',
+              'aria-live': 'polite',
+            },
+          });
+        }, (error) => {
+            console.log(error.text);
+            toast('Mesaj göndərilmedi', {
+                duration: 2000,
+                position: 'top-center',
+              
+                // Styling
+                style: {},
+                className: '',
+              
+                // Custom Icon
+                icon: '❌',
+              
+                // Change colors of success/error/loading icon
+                iconTheme: {
+                  primary: '#000',
+                  secondary: '#fff',
+                },
+              
+                // Aria
+                ariaProps: {
+                  role: 'status',
+                  'aria-live': 'polite',
+                },
+              });
+        });
+    };
   return (
     <>
       <footer
@@ -83,16 +129,23 @@ const Footer = () => {
               <p onClick={() => navigate("/user/reports")}>Nəticə</p>
             </div>
             <div className={styled.footer_right}>
+                <h1>Bizimlə əlaqə</h1>
               <form ref={form} onSubmit={sendEmail}>
-                <div>
+                <div className={styled.inp_body}>
+                    <AiOutlineUser/>
                 <input placeholder="Istifadeci adi" type="text" name="user_name" />
-
                 </div>
-                <label>Email</label>
-                <input type="email" name="user_email" />
-                <label>Message</label>
-                <textarea name="message" />
-                <input type="submit" value="Send" />
+                <div className={styled.inp_body}>
+                    <AiOutlineMail/>
+                    <input type="email" 
+                    placeholder="E-mail" name="user_email" />
+                </div>
+                <div className={styled.textArea_body}>
+                <textarea placeholder="Mesaj yazın" name="message" />
+                </div>
+                <div className={styled.submit_btn}>
+                <input type="submit" value="Göndər"/>
+                </div>
               </form>
             </div>
           </div>
@@ -107,6 +160,7 @@ const Footer = () => {
             <p>Ⓒ Quizlet Quiz Portal</p>
           </div>
         </div>
+        <Toaster />
       </footer>
     </>
   );
