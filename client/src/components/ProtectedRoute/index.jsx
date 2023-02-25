@@ -6,8 +6,9 @@ import { SetUser } from '../../redux/usersSlice/usersSlice'
 import { useNavigate } from 'react-router-dom'
 import 'remixicon/fonts/remixicon.css'
 import Navbar from '../Navbar/Index'
-import Footer from '../.././components/Footer'
+import AdminFooter from '../AdminFooter'
 import { HideLoading, ShowLoading } from '../../redux/loaderSlice/loaderSlice'
+import UserFooter from '../UserFooter'
 const ProtectedRoute = ({ children }) => {
   const { user } = useSelector((state) => state.users)
   const [menu, setMenu] = useState([])
@@ -83,7 +84,9 @@ const ProtectedRoute = ({ children }) => {
     <>
     <Navbar menu = {menu}/>
       {children}
-      <Footer/>
+      {
+        user?.isAdmin? <AdminFooter/>: <UserFooter/>
+      }
     </>
 
   )

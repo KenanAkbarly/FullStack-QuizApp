@@ -57,9 +57,15 @@ const Index = ({menu}) => {
             }
              <p onClick={showModal} className={modal? styled.modal_items: styled.items} >{user?.isAdmin? <i class="ri-admin-line"></i>:<i className="ri-user-line"></i> }<span>{user?.isAdmin? 'Admin':'User'}</span>
 
-             <div className={modal? styled.active_modal : styled.none_modal}>
-              <p className={styled.user_name}><i class="ri-emotion-happy-line"></i>{user?.name}</p>
-              <p onClick={ () => {
+             <div 
+             style={mode? {backgroundColor:'white'}:{backgroundColor:"#19202D"}}
+             className={modal? styled.active_modal : styled.none_modal}>
+              <p 
+              style={mode? {color:'#253858'}:{color:'#264e93'}}
+              className={styled.user_name}><i class="ri-emotion-happy-line"></i>{user?.name}</p>
+              <p 
+              style={mode? {color:'#253858'}:{color:'#264e93'}}
+              onClick={ () => {
       localStorage.removeItem("token");
         navigate("/")
       }} className={styled.items}><i className="ri-logout-box-line"></i>Çıxış</p>   
