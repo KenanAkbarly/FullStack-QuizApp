@@ -14,8 +14,6 @@ const UserReports = () => {
   const [reportsData, setReportsData] = useState([]);
   const dispatch = useDispatch();
   const { mode } = useSelector((state) => state.darkMode);
-
-  console.log("report data", reportsData);
   const columns = useMemo(
     () => [
       {

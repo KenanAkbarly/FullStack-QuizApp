@@ -9,7 +9,6 @@ import { message} from 'antd';
 import MaterialReactTable from 'material-react-table';
 const AdminReports = () => {
     const [reportsData, setReportsData] = useState([]);
-    console.log(reportsData);
     const dispatch = useDispatch()
     const {mode} = useSelector((state)=> state.darkMode)
      const columns = useMemo(
