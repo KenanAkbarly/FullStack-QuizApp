@@ -27,7 +27,7 @@ const Carusel = () => {
             lineHeight: 1,
             textAlign: "center",
             width: 40,
-            top:"50%",
+            top:"58%",
             position:'absolute',
             right:0,
             zIndex:10,
@@ -50,7 +50,7 @@ const Carusel = () => {
             textAlign: "center",
             width: 40,
             position:'absolute',
-            top:"50%",
+            top:"58%",
             left:0,
             zIndex:10,
             marginLeft:"10px"
