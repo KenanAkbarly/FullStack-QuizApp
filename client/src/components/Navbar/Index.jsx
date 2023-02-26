@@ -106,9 +106,9 @@ const Index = ({menu}) => {
                 })
               }
               
-              <p className={styled.nav_text}>
+              {/* <p className={styled.nav_text}>
               <p style={mode? {color:'#253858'}:{color:'#264e93'}} onClick={ () => navigate("/profile")} className={styled.nav_items_user} >{user?.isAdmin? <i class="ri-admin-line"></i>:<i className="ri-user-line"></i> }<span className={styled.span}>{user?.isAdmin? 'Admin':'User'}</span></p>
-              </p>
+              </p> */}
               <p className={styled.nav_text}>
               <p style={mode? {color:'#253858'}:{color:'#264e93'}} onClick={ () => {
       localStorage.removeItem("token");

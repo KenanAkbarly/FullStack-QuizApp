@@ -28,8 +28,8 @@ margin-top: 10px;
 .question_option{
     // background-color: #5aa2f55d;
     // background-color: red;
-    width: 600px;
-    padding: 15px 30px;
+    width: 650px;
+    padding: 30px 30px;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 .option_body{
@@ -255,7 +255,8 @@ p{
         display: flex;
         align-items: center;
         gap: 5px;
-        padding: 8px 5px;
+        font-size: 16px;
+        padding: 8px 10px;
         cursor: pointer;
     }
 }
