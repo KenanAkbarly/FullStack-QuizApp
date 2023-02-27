@@ -52,7 +52,7 @@ const Register = () => {
     <div className={styled.login_body}>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Register</title>
+        <title>Qeydiyyat</title>
         {/* <link rel="canonical" href="http://mysite.com/example" /> */}
       </Helmet>
       <div className={styled.header}>
@@ -61,17 +61,18 @@ const Register = () => {
       </div>
       <div className={styled.login}>
       <div className={styled.login_right}>
+      <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_jcikwtux.json"  background="transparent"  speed="1" loop  autoplay></lottie-player>
         </div>
         <div className={styled.login_left}>
           <form onSubmit={formik.handleSubmit}>
-            <h2>Register</h2>
+            <h2>Qeydiyyat</h2>
             <div className={styled.inp_body}>
               <AiOutlineUser />
               <input
                 id="name"
                 name="name"
                 type="text"
-                placeholder='Name'
+                placeholder='Ad'
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.name}
@@ -103,7 +104,7 @@ const Register = () => {
                 id="password"
                 name="password"
                 type="password"
-                placeholder='Password'
+                placeholder='Parol'
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.password}
@@ -113,9 +114,9 @@ const Register = () => {
               <span className={styled.requried}>{formik.errors.password}</span>
             ) : null}
 
-            <button type="submit">Continue</button>
+            <button type="submit">Təsdiqlə</button>
             <Link className={styled.register_link} to='/login'>
-              Already a member? Login
+              Artıq qeydiyyatdan keçmisiniz? Daxil ol
             </Link>
           </form>
         </div>

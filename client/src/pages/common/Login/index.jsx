@@ -82,7 +82,7 @@ const Login = () => {
                 id="password"
                 name="password"
                 type="password"
-                placeholder='Password'
+                placeholder='Parol'
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.password}

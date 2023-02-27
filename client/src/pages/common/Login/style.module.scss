@@ -113,11 +113,7 @@
             width: 50%;
             height: 400px;
             background-color: white;
-            // background-image: url('https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg');
-            // background-repeat: no-repeat;
-            // background-size: cover;
-            // background-position: center center;
-            // object-fit: cover;
+
         }
     }
 }
@@ -136,7 +132,10 @@
        
     }
     .header{
-        //  margin-top: 10px !important
+        .header{
+            margin-bottom: 10px;
+        }
+      
     }
   
 }
