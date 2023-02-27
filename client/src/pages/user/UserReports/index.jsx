@@ -71,14 +71,23 @@ const UserReports = () => {
         </div>
         <div  className={styled.table_body}>
           <MaterialReactTable
+            muiTablePaperProps={{
+              elevation: 0, //change the mui box shadow
+              //customize paper styles
+              sx: {
+                borderRadius: '30',
+                border: '1px solid #e0e0e0',
+                
+              },
+            }}
             displayColumnDefOptions={{
               "mrt-row-actions": {
                 muiTableHeadCellProps: {
                   align: "center",
                 },
                 size: 20,
-                
               },
+            
             }}
             columns={columns}
             data={reportsData}

@@ -16,7 +16,7 @@ const Quizz = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.users);
   const [examName, setExamName] = useState("");
-  const {mode} = useSelector((state)=> state.darkMode)
+  const { mode } = useSelector((state) => state.darkMode);
   const handleChange = (event) => {
     setExamName(event.target.value);
   };
@@ -39,9 +39,12 @@ const Quizz = () => {
     getExams();
   }, []);
   return (
-    <div className={mode? styled.quizz_body: styled.dark_quizz_body}>
+    <div className={mode ? styled.quizz_body : styled.dark_quizz_body}>
       <div className={styled.container}>
-        <div style={mode?{color:'#253858'}:{color:'#456cb0'}} className={styled.header_text }>
+        <div
+          style={mode ? { color: "#253858" } : { color: "#456cb0" }}
+          className={styled.header_text}
+        >
           <PageTitle
             title={`Salam  ${
               user ? user.name : ""
@@ -49,7 +52,22 @@ const Quizz = () => {
           />
         </div>
         <div className={styled.search_filter}>
-          <div style={mode? {backgroundColor:'',border:'1px solid rgb(180, 180, 180)',color:" #253858"}:{backgroundColor:"#19202D",border:'1px solid #1e3664',color:" #9c9c9c"}} className={styled.search}>
+          <div
+            style={
+              mode
+                ? {
+                    backgroundColor: "",
+                    border: "1px solid rgb(180, 180, 180)",
+                    color: " #253858",
+                  }
+                : {
+                    backgroundColor: "#19202D",
+                    border: "1px solid #1e3664",
+                    color: " #9c9c9c",
+                  }
+            }
+            className={styled.search}
+          >
             <FiSearch />
             <input
               value={examName}
@@ -73,10 +91,18 @@ const Quizz = () => {
               })
               .map((exam) => {
                 return (
-                  <div style={mode? {backgroundColor:'white'}: {backgroundColor:"#19202D"}} key={exam._id} className={styled.card }>
-                    <h1
-                    style={mode? {color:'black'}:{color:'white'}}
-                    >{exam.name}</h1>
+                  <div
+                    style={
+                      mode
+                        ? { backgroundColor: "white" }
+                        : { backgroundColor: "#19202D" }
+                    }
+                    key={exam._id}
+                    className={styled.card}
+                  >
+                    <h1 style={mode ? { color: "black" } : { color: "white" }}>
+                      {exam.name}
+                    </h1>
                     <p className={styled.category}>
                       Kategorya : {exam.category}
                     </p>
@@ -91,7 +117,14 @@ const Quizz = () => {
                     </p>
                     <div className={styled.btn_body}>
                       <button
-                      style={mode? {border:'2px solid  #253858',color:" #253858"} :{border: "2px solid #264e93",color: "#264e93"}}
+                        style={
+                          mode
+                            ? {
+                                border: "2px solid  #253858",
+                                color: " #253858",
+                              }
+                            : { border: "2px solid #264e93", color: "#264e93" }
+                        }
                         onClick={() => navigate(`/user/write-exam/${exam._id}`)}
                       >
                         İmtahana Başla

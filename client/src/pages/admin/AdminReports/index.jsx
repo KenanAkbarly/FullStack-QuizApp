@@ -76,7 +76,17 @@ const AdminReports = () => {
          </div>
 
          <div className={styled.table_body}>
-          <MaterialReactTable  displayColumnDefOptions={{
+          <MaterialReactTable 
+          muiTablePaperProps={{
+            elevation: 0, //change the mui box shadow
+            //customize paper styles
+            sx: {
+              borderRadius: '50',
+              // border: '1px solid #e0e0e0',
+              
+            },
+          }}
+          displayColumnDefOptions={{
           'mrt-row-actions': {
             muiTableHeadCellProps: {
               align: 'center',

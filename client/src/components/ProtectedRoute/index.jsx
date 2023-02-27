@@ -31,6 +31,7 @@ const ProtectedRoute = ({ children }) => {
     },
 
   ]
+  
   const adminMenu = [
     {
       title: "Əsas Səhifə",

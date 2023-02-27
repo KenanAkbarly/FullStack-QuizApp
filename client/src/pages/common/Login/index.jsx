@@ -34,7 +34,7 @@ const Login = () => {
           window.location.href = "/quizz";
         } else {
           message.error(response.message);
-        }
+        }      
       } catch (error) {
         dispatch(HideLoading())
         message.error(error.message);
@@ -48,7 +48,7 @@ const Login = () => {
         <meta charSet="utf-8" />
         <title>Daxil ol</title>
         <link rel="canonical" href="http://mysite.com/example" />
-      </Helmet>
+        </Helmet>
       <div className={styled.header}>
         <img src="https://www.shareicon.net/data/2015/08/19/87561_games_1042x1042.png" alt="" />
         <h1>Quizlet</h1>

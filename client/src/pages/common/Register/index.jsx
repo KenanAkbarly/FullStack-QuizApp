@@ -45,7 +45,6 @@ const Register = () => {
         message.error(error.message)
       }
       formik.resetForm()
-
     },
   });
   return (
