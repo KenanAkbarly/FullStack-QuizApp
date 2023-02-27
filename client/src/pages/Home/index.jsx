@@ -8,6 +8,7 @@ import Carusel from '../../components/Carusel';
 const Home = () => {
   return (
     <div >
+      <section>
       <div className={styled.header}>
       <HomeHeader/>
       <div className={styled.header_text}>
@@ -22,6 +23,7 @@ const Home = () => {
         </div>
       </div>
       </div>
+      </section>
     <section id='learning' >
       <div className={styled.learning_section}>
         <div className={styled.contanier}>
@@ -31,16 +33,34 @@ const Home = () => {
           </div>
          
           <div className={styled.learning_section_right}>
-          
           <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_ayopewsc.json"  background="transparent"  speed="1"    loop  autoplay></lottie-player>
           </div>
 
         </div>
       </div>
+    </section>
+
+    <section id='activity'>
     <div className={styled.carusel_body}>
       <Carusel/>
     </div>
     </section>
+
+    <section id='accesibility'>
+    <div className={styled.activity_section}>
+        <div className={styled.contanier}>
+        <div className={styled.activity_section_right}>
+        <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_qef87ngc.json"  background="transparent"  speed="1"  loop  autoplay></lottie-player>
+          </div>
+
+          <div className={styled.activity_section_left}>
+            <h2>Bütün cihazlarda əlçatanlıq</h2>
+            <p>Web saytların bütün cihazlar üçün əlçatan olması vacib faktordur. Quzilet imtahan programı bütün əsas rəqəmsal cihazlarda və platformalarda istifadə üçün əlçatandır. Smartfonlarda, planşetlərdə, notbuklarda və kompüterlərdə Quizlet-dən istifadə edə bilərsiniz.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
     </div>
   )
 }
