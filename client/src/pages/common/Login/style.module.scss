@@ -17,7 +17,7 @@
         display: flex;
         align-items: center;
         gap: 5px;
-        margin-top: 70px;
+        // margin-top: 70px;
 
         img {
             width: 50px;
@@ -60,7 +60,7 @@
                     border: none;
                     background-color: #5aac44;
                     color: white;
-                    font-size: 15px;
+                    font-size: 18px;
                     font-weight: 500;
                     transition: all 0.2s ease;
 
@@ -112,10 +112,11 @@
         .login_right {
             width: 50%;
             height: 400px;
-            background-image: url('https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center center;
+            background-color: white;
+            // background-image: url('https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-83.jpg');
+            // background-repeat: no-repeat;
+            // background-size: cover;
+            // background-position: center center;
             // object-fit: cover;
         }
     }
@@ -132,6 +133,10 @@
     .login_right{
         width: 100% !important;
         height: 150px !important;
+       
+    }
+    .header{
+        //  margin-top: 10px !important
     }
   
 }

@@ -47,7 +47,7 @@
               transition: all 0.3s ease;
               font-weight: 700;
               &:hover{
-                color: #717fe0;
+                color: #01b3ff ;
                 cursor: pointer;
               }
 
@@ -56,14 +56,15 @@
                 width: 100px;
                 height: 35px;
                 background-color: transparent;
-                border: 3px solid #06B7D8 ;
+                border: 2px solid #06B7D8 ;
                 border-radius: 5px;
                 font-size: 18px;
                 font-weight: 500;
                 cursor: pointer;
                 transition: all 0.3s ease;
                 &:hover{
-                    border: 3px solid #01b3ff ;
+                    border: 2px solid #01b3ff ;
+                    color: #01b3ff !important;
                     }
             }
             .register_btn{
@@ -95,7 +96,7 @@
                 a{
                     transition: all 0.3s ease;
                     &:hover{
-                      color: #717fe0;
+                      color: #01b3ff ;
                       cursor: pointer;
       
                     }
@@ -104,7 +105,7 @@
                     color: rgb(178, 178, 178);
                     transition: all 0.3s ease;
               &:hover{
-                color: #717fe0;
+                color: #01b3ff ;
                 cursor: pointer;
 
               }
@@ -125,7 +126,7 @@
                     color: white;
                     transition: all 0.3s ease;
               &:hover{
-                color: #717fe0;
+                color: #01b3ff ;
                 cursor: pointer;
 
               }
@@ -230,7 +231,7 @@
     font-size:18px;
     font-weight: 500;
     &:hover{
-        color: #717fe0;
+        color: #01b3ff ;
         cursor: pointer;
 
       }

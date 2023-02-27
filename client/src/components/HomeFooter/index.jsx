@@ -2,14 +2,15 @@ import React from 'react'
 import styled from './style.module.scss'
 import {
     AiOutlineInstagram,
-    AiOutlineUser,
-    AiOutlineMail,
+    AiOutlineMail
   } from "react-icons/ai";
   import { FaLinkedinIn } from "react-icons/fa";
+  import { GoLocation } from "react-icons/go";
   import { BsGithub } from "react-icons/bs";
   import emailjs from "@emailjs/browser";
   import toast, { Toaster } from "react-hot-toast";
   import ScrollToTop from "react-scroll-to-top";
+import { Link } from 'react-scroll'
 const HomeFooter = () => {
   return (
     <>
@@ -30,8 +31,29 @@ const HomeFooter = () => {
                   Quizlet
                 </h1>
               </div>
+              <div
+         
+         className={styled.footer__bottom}
+       >
+         <div>
+         <p>© Copyright 2023. Bütün hüquqlar qorunur.</p>
+         <p>Quizlet Kenan Akbarly-nin məhsuludur</p>
+         </div>
+       </div>
+            </div>
+            <div className={styled.footer_middle}>
+              <h1>Səhifələr</h1>
+              <p><Link to='learning' spy={true} smooth={true} offset={-100} duration={500}>Haqqımızda</Link></p>
+              <p><Link to='activity' spy={true} smooth={true} offset={-100} duration={500}>Fəaliyyət</Link></p>
+              <p> <Link to='accesibility' spy={true} smooth={true} offset={-100} duration={500}>Əlçatanlıq</Link></p>
+              <p><Link to='contact' spy={true} smooth={true} offset={-100} duration={500}>Əlaqə</Link></p>
+            </div>
+            <div className={styled.footer_right}>
+              <h1>Əlaqə məlumatı</h1>
               <div className={styled.social_media}>
-                <p>Bizi izlə</p>
+                 <p><GoLocation/>  Bakı, Azərbaycan AZ 1073 Azərbaycan Texniki Universiteti.</p>
+                <p><AiOutlineMail/> akbarlykenan@gmail.com</p>
+                <h3>Bizi izlə</h3>
                 <div className={styled.effect}>
                   <div className={styled.buttons}>
                     <a
@@ -65,22 +87,8 @@ const HomeFooter = () => {
                 </div>
               </div>
             </div>
-            <div className={styled.footer_middle}>
-              <h1>Səhifələr</h1>
-              <p>Əsas Səhifə</p>
-              <p>Nəticə</p>
-            </div>
-            <div className={styled.footer_right}>
-              <h1>Bizimlə əlaqə</h1>
-
-            </div>
           </div>
-          <div
          
-            className={styled.footer__bottom}
-          >
-            <p>Ⓒ Quizlet Quizz Portalı</p>
-          </div>
         </div>
         <Toaster />
       </footer>

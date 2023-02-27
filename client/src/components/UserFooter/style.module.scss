@@ -19,11 +19,11 @@ footer {
       .footer_left {
         // width: 200px;
         display: flex;
-        //   align-items: center;
+        align-items: center;
         gap: 5px;
         img {
-          width: 40px;
-          height: 40px;
+          width: 50px;
+          height: 50px;
         }
       }
       .social_media {
@@ -35,7 +35,7 @@ footer {
           margin-top: 10px;
           display: flex;
           // justify-content: center;
-          gap: 5px;
+          gap: 8px;
         }
         .effect {
           /*display: flex; !!!uncomment this line !!!*/

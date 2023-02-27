@@ -46,7 +46,7 @@ const Login = () => {
     <div className={styled.login_body}>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Login</title>
+        <title>Daxil ol</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
       <div className={styled.header}>
@@ -55,10 +55,11 @@ const Login = () => {
       </div>
       <div className={styled.login}>
         <div className={styled.login_right}>
+        <lottie-player src="https://assets10.lottiefiles.com/packages/lf20_KvK0ZJBQzu.json"  background="transparent"  speed="1"  loop  autoplay></lottie-player>
         </div>
         <div className={styled.login_left}>
           <form onSubmit={formik.handleSubmit}>
-            <h2>Login</h2>
+            <h2>Daxil ol</h2>
             <div className={styled.inp_body}>
               <HiOutlineMail />
               <input
@@ -91,9 +92,9 @@ const Login = () => {
               <span className={styled.requried}>{formik.errors.password}</span>
             ) : null}
 
-            <button type="submit">Continue</button>
+            <button type="submit">Giriş</button>
             <Link className={styled.register_link} to='/register'>
-              Not a member? Register
+             Qeydiyyatdan keçməmisiniz? Qeydiyyat
             </Link>
           </form>
         </div>

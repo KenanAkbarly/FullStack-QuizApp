@@ -6,6 +6,7 @@ footer {
     // border-top:3px solid #3B3B3B;
   
     // padding-top: 40px;
+    margin-top: 20px;
     .footer__container {
       width: 1200px;
       height: auto;
@@ -19,23 +20,37 @@ footer {
         .footer_left {
           // width: 200px;
           display: flex;
-          //   align-items: center;
+          align-items: center;
           gap: 5px;
+          font-size: 25px;
+          color: white;
+
           img {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
           }
         }
         .social_media {
-          p {
+            p{
+                color: white;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                width: 300px;
+                font-size: 13px;
+                font-weight: 300;
+                margin-top: 5px;
+            }
+          h3 {
             color: white;
             margin-top: 20px;
           }
           .buttons {
             margin-top: 10px;
+            margin-bottom: 20px;
             display: flex;
             // justify-content: center;
-            gap: 5px;
+            gap: 8px;
           }
           .effect {
             /*display: flex; !!!uncomment this line !!!*/
@@ -101,12 +116,17 @@ footer {
         .footer_middle {
           width: 200px;
           display: block;
+          margin-bottom: 20px;
+          margin-left: 15px;
           h1 {
-            font-size: 22px;
-            color: rgb(104, 104, 104);
+            font-size: 25px;
+            color: #27AAE1;
             margin-bottom: 10px;
           }
-          p {
+          p{
+            margin-bottom: 10px;
+          }
+          a {
             color: #fff;
             // text-transform: uppercase;
             text-decoration: none;
@@ -115,6 +135,7 @@ footer {
             padding: 7px 0px;
             position: relative;
             font-size: 16px;
+            
             &::after {
               background: none repeat scroll 0 0 transparent;
               bottom: 2px;
@@ -129,7 +150,7 @@ footer {
             }
             &:hover::after {
               cursor: pointer;
-              width: 60%;
+              width: 100%;
               left: 0;
             }
           }
@@ -140,106 +161,27 @@ footer {
             color: #264e93;
           }
         }
-        .footer_right {
-          width: 520px;
-          height: 220px;
-          padding: 10px 5px;
-          /* From https://css.glass */
-          background: rgba(65, 65, 65, 0.4);
-          border-radius: 16px;
-          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-          backdrop-filter: blur(5px);
-          -webkit-backdrop-filter: blur(5px);
-          border: 1px solid rgba(65, 65, 65, 0.4);
-          h1 {
-            color: white;
-            font-size: 25px;
-            text-align: center;
-            margin-bottom: 10px;
-          }
-          form {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-          }
-          .inp_body {
-            width: 48%;
-            height: 30px;
-            border: 1px solid rgba(180, 180, 180, 0.493);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            padding: 0px 3px;
-            color: white;
-            input {
-              width: 100%;
-              height: 100%;
-              background-color: transparent;
-              border: none;
-              color: white;
-              &:focus {
-                outline: none;
-              }
-              &::placeholder {
-                color: rgba(255, 255, 255, 0.379);
-                font-style: italic;
-              }
+        .footer_right{
+            h1{
+                color: #27AAE1;
             }
-          }
-          .textArea_body {
-            margin-top: 10px;
-            width: 100%;
-            height: 70px;
-            border: 1px solid rgba(180, 180, 180, 0.493);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            padding: 0px 3px;
-            color: white;
-            outline: none;
-            textarea {
-              width: 100%;
-              height: 100%;
-              background-color: transparent;
-              border: none;
-              resize: none;
-              color: white;
-              &:focus {
-                outline: none;
-              }
-              &::placeholder {
-                color: rgba(255, 255, 255, 0.379);
-                font-style: italic;
-              }
-            }
-          }
-          .submit_btn {
-            width: 100%;
-            margin-top: 10px;
-            input[type="submit"] {
-              width: 100px;
-              height: 30px;
-              border-radius: 5px;
-              border: none;
-              background-color: #264e93;
-              color: white;
-            }
-          }
         }
+
       }
       .footer__bottom {
-        margin-top: 30px;
-  
-        p {
-          padding-top: 20px;
+        margin-top: 10px;
+        div{
+            padding-top: 20px;
           padding-bottom: 10px;
-          font-weight: 400;
-          font-size: 12px;
-          line-height: 110%;
-          color: #cccccc;
+          p {
+            margin-bottom: 5px;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 110%;
+            color: #cccccc;
+          }
         }
+       
       }
     }
   
