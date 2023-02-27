@@ -143,89 +143,89 @@ footer {
       .footer_right {
         width: 520px;
         height: 220px;
-        padding: 10px 5px ; 
-    /* From https://css.glass */
-background: rgba(65, 65, 65, 0.4);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(5px);
--webkit-backdrop-filter: blur(5px);
-border: 1px solid rgba(65, 65, 65, 0.4);
-        h1{
+        padding: 10px 5px;
+        /* From https://css.glass */
+        background: rgba(65, 65, 65, 0.4);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(65, 65, 65, 0.4);
+        h1 {
+          color: white;
+          font-size: 25px;
+          text-align: center;
+          margin-bottom: 10px;
+        }
+        form {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+        }
+        .inp_body {
+          width: 48%;
+          height: 30px;
+          border: 1px solid rgba(180, 180, 180, 0.493);
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          padding: 0px 3px;
+          color: white;
+          input {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            border: none;
             color: white;
-            font-size: 25px;
-            text-align: center;
-            margin-bottom: 10px;
+            &:focus {
+              outline: none;
+            }
+            &::placeholder {
+              color: rgba(255, 255, 255, 0.379);
+              font-style: italic;
+            }
+          }
         }
-        form{
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+        .textArea_body {
+          margin-top: 10px;
+          width: 100%;
+          height: 70px;
+          border: 1px solid rgba(180, 180, 180, 0.493);
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          padding: 0px 3px;
+          color: white;
+          outline: none;
+          textarea {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            border: none;
+            resize: none;
+            color: white;
+            &:focus {
+              outline: none;
+            }
+            &::placeholder {
+              color: rgba(255, 255, 255, 0.379);
+              font-style: italic;
+            }
+          }
         }
-        .inp_body{
-            width: 48%;
+        .submit_btn {
+          width: 100%;
+          margin-top: 10px;
+          input[type="submit"] {
+            width: 100px;
             height: 30px;
-            border: 1px solid rgba(180, 180, 180, 0.493);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            padding: 0px 3px;
+            border-radius: 5px;
+            border: none;
+            background-color: #264e93;
             color: white;
-            input{
-                width: 100%;
-                height: 100%;
-                background-color: transparent;
-                border: none;
-                color: white;
-                &:focus{
-                    outline: none;
-                }
-                &::placeholder{
-                    color: rgba(255, 255, 255, 0.379);
-                    font-style: italic;
-                }
-            }
-        }
-        .textArea_body{
-            margin-top: 10px;
-            width: 100%;
-            height: 70px;
-            border: 1px solid rgba(180, 180, 180, 0.493);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            padding: 0px 3px;
-            color: white;
-            outline: none;
-            textarea{
-                width: 100%;
-                height: 100%;
-                background-color: transparent;
-                border: none;
-                resize: none;
-                color: white;
-                &:focus{
-                    outline: none;
-                }
-                &::placeholder{
-                    color: rgba(255, 255, 255, 0.379);
-                    font-style: italic;
-                }
-            }
-        }
-        .submit_btn{
-            width: 100%;
-            margin-top: 10px;
-            input[type="submit"]{
-                width: 100px;
-                height: 30px;
-                border-radius: 5px;
-                border: none;
-                background-color: #264E93;
-                color: white;
-            }
+          }
         }
       }
     }
@@ -256,9 +256,9 @@ border: 1px solid rgba(65, 65, 65, 0.4);
     .footer__bottom {
       padding-bottom: 40px;
     }
-    .footer_right{
-        width: 330px !important;
-        margin: 0 auto;
+    .footer_right {
+      width: 330px !important;
+      margin: 0 auto;
     }
     .footer__container {
       width: 350px;

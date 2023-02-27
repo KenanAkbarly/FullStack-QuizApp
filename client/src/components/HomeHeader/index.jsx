@@ -35,7 +35,7 @@ window.onscroll = function(){
     <Link to='learning' spy={true} smooth={true} offset={-100} duration={500}>Haqqımızda</Link>
     <Link to='activity' spy={true} smooth={true} offset={-100} duration={500}>Fəaliyyət</Link>
     <Link to='accesibility' spy={true} smooth={true} offset={-100} duration={500}>Əlçatanlıq</Link>
-    <Link to='contact' spy={true} smooth={true} offset={-150} duration={500}>Əlaqə</Link>
+    <Link to='contact' spy={true} smooth={true} offset={-100} duration={500}>Əlaqə</Link>
     <button
     style={scroll?{color:'black'} :{color:'white'}}
     className={styled.login_btn}
