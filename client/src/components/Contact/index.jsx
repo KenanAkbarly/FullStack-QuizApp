@@ -116,8 +116,6 @@ const Contact = () => {
                 <h2>
                     Sualların var?  {' '}  Bizimlə bölüş!
                 </h2>
-                <h2>
-                </h2>
               <div className={styled.footer_right}>
                 <h1>Bizimlə əlaqə</h1>
               <form ref={form} onSubmit={sendEmail}>

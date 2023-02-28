@@ -102,3 +102,33 @@
     justify-content: center;
   }
 }
+@media screen and (max-width: 350px) {
+  .carusel_contanier {
+    width: 300px !important;
+    flex-direction: column;
+  }
+  .carusel_text{
+    justify-content: center;
+    order: 2;
+    p{
+        width: 300px !important;
+        font-size: 15px;
+        text-align: center;
+    }
+    h2{
+        width: 300px !important;
+
+        font-size: 25px;
+    margin-bottom: 10px;
+   margin-left: 0px;
+    text-align: center;
+
+    }
+  }
+  .image_body{
+    order: 1;
+    width: 100% !important;
+    margin: 0 auto !important;
+    justify-content: center;
+  }
+}

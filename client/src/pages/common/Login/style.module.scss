@@ -139,3 +139,23 @@
     }
   
 }
+@media screen and (max-width: 350px) {
+    .login{
+        width: 300px !important;
+        flex-direction: column;
+        align-items: center;
+    }
+    .login_left{
+        width: 100% !important;
+    }
+    .login_right{
+        width: 100% !important;
+        height: 150px !important;
+       
+    }
+    .header{
+             margin-top: 50px !important;
+      
+    }
+  
+}

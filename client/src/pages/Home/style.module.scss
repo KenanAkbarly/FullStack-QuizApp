@@ -239,3 +239,43 @@
     }
   }
 }
+@media screen and (max-width: 350px) {
+  .learning_section {
+    .contanier {
+      width: 300px !important;
+      .learning_section_left {
+        margin: 0 auto;
+        width: 300px !important;
+       
+      }
+      .learning_section_right {
+        margin: 0 auto;
+        width: 300px !important;
+      }
+    }
+  }
+  .activity_section {
+    .contanier {
+      width: 300px !important;
+      flex-direction: column;
+      .activity_section_left {
+        margin: 0 auto;
+        width: 300px !important;
+      }
+      .activity_section_right {
+        margin: 0 auto;
+        width: 300px !important;
+      }
+    }
+  }
+  .header_text {
+    p {
+      width: 280px !important;
+      margin: 0 auto;
+      font-size: 18px !important;
+    }
+    h1 {
+      font-size: 25px !important;
+    }
+  }
+}

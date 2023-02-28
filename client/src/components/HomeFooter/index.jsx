@@ -7,7 +7,6 @@ import {
   import { FaLinkedinIn } from "react-icons/fa";
   import { GoLocation } from "react-icons/go";
   import { BsGithub } from "react-icons/bs";
-  import emailjs from "@emailjs/browser";
   import toast, { Toaster } from "react-hot-toast";
   import ScrollToTop from "react-scroll-to-top";
 import { Link } from 'react-scroll'
@@ -18,7 +17,7 @@ const HomeFooter = () => {
         
         className={styled.footer__home}
       >
-        <ScrollToTop smooth top="60" />
+        <ScrollToTop smooth top="200" />
         <div className={styled.footer__container}>
           <div className={styled.footer_content}>
             <div className={styled.footer_left_body}>
