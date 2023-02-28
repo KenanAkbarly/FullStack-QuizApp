@@ -84,3 +84,40 @@
     width: 100px;
     margin-left: 10px;
 }
+
+@media screen and (max-width: 1200px) {
+
+    .exams_header{
+        width: 690px !important;
+    }
+    .table_section{
+        width: 690px !important;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .exams_header{
+        width: 350px !important;
+        flex-direction: column;
+        button{
+            width: 200px;
+        }
+    }
+    .table_section{
+        width: 350px !important;
+    }
+  
+}
+@media screen and (max-width: 350px) {
+    .exams_header{
+        width: 300px !important;
+        flex-direction: column;
+        button{
+            width: 200px;
+        }
+    }
+    .table_section{
+        width: 300px !important;
+    }
+  
+}
