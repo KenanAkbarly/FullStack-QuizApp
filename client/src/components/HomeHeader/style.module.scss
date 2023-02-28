@@ -207,7 +207,7 @@
 .active {
    width: 250px;
    height: 100vh;
-   background-color: #F2FBFD;
+   background-color: #dfeff3;
    display: flex;
    justify-content: center;
    position: fixed;
@@ -238,15 +238,15 @@
    }
    .login_btn{
     width: 100px;
-    height: 30px;
+    height: 28px;
     background-color: transparent;
     border: 2px solid #06B7D8 ;
-    background-color: #84e0f0;
+    // background-color: #84e0f0;
     border-radius: 5px;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 500;
     cursor: pointer;
-    color: white;
+    color: black;
     &:hover{
         border: 2px solid #55c1d4 ;
         }
@@ -261,7 +261,7 @@
     font-size: 16px;
     background-color:#06B7D8 ;
     cursor: pointer;
-    color: white;
+    color: black;
     transition: all 0.3s ease;
     &:hover{
     background-color:#55c1d4 ;
