@@ -175,3 +175,24 @@ ol.gradient_list {
 
   
 }
+@media screen and (max-width: 350px) {
+    .Instructions_body{
+        width: 300px !important;
+    }
+    h1{
+        margin-left: 0 !important;
+    }
+    .btn_body{
+        flex-direction: column;
+        margin-top: 25px;
+        margin-bottom: 50px !important;
+    }
+  .Instructions_items{
+     width: 100%;
+     li{
+        width: 100%;
+     }
+  }
+
+  
+}
