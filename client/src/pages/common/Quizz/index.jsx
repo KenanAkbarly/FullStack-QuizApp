@@ -6,6 +6,7 @@ import {
   HideLoading,
 } from "../../.././redux/loaderSlice/loaderSlice";
 import { getAllExams } from "../../../apicalls/exmas";
+import {Helmet} from "react-helmet";
 import PageTitle from "../../../components/PageTitle";
 import styled from "./style.module.scss";
 import { useNavigate } from "react-router-dom";
@@ -40,6 +41,10 @@ const Quizz = () => {
   }, []);
   return (
     <div className={mode ? styled.quizz_body : styled.dark_quizz_body}>
+       <Helmet>
+                <meta charSet="utf-8" />
+                <title>Quizlet</title>
+            </Helmet>
       <div className={styled.container}>
         <div
           style={mode ? { color: "#253858" } : { color: "#456cb0" }}

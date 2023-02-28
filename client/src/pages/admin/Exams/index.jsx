@@ -16,6 +16,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination';
+import {Helmet} from "react-helmet";
 const columns = [
   {
     label: 'Imtahan adı',
@@ -107,6 +108,10 @@ const Exams = () => {
   return (
     <div className={mode? style.addEditExam_body: style.darkaddEditExam_body}>
       <div >
+      <Helmet>
+                <meta charSet="utf-8" />
+                <title>İmtahanlar</title>
+            </Helmet>
         <div className={style.exams_header}>
           <PageTitle title="İmtahanlar" />
           <button

@@ -203,3 +203,27 @@
         font-size: 14px !important;
     }
 }
+@media screen and (max-width: 350px) {
+  
+    .addExam_body{
+        width: 300px !important;
+    }
+    .inp_body{
+        width: 260px !important;
+        // padding: 0px 10px !important;
+    }
+    .addBtn{
+        margin-left: 0 !important;
+    }
+    .addExam_btns{
+        display: flex;
+        flex-direction: column;
+        button{
+            width: 120px !important;
+            height: 30px !important;
+        }
+    }
+    input{
+        font-size: 14px !important;
+    }
+}
