@@ -182,3 +182,33 @@
     }
   
 }
+@media screen and (max-width: 750px) {
+    .container{
+        width: 300px !important;
+        margin: 0 auto;
+    }
+    .header_text{
+        width: 300px;
+        font-size: 9px !important;
+        text-align: center;
+    }
+    .card_body{
+        display: flex;
+        justify-content: center;
+    }
+    .search{
+        margin: 0 auto;
+        width: 270px !important;
+    }
+    .card{
+        flex-direction: column;
+        width:270px !important;
+        height: 270px !important;
+        justify-content: flex-start;
+        align-items: flex-start;
+       p{
+        padding: 0 !important;
+       }
+    }
+  
+}
