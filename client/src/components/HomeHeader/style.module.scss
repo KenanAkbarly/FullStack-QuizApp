@@ -360,6 +360,32 @@
         display: flex !important;
         padding: 0px 20px;
     }
+    .ham_menu_navbar_left{
+      h1{
+        font-size: 30px !important;
+      }
+      img{
+        width: 45px !important;
+        height: 45px !important;;
+      }
+    }
+  
+    }
+    @media screen and (max-width: 350px){
+
+    .ham_menu{
+        display: flex !important;
+        padding: 0px 20px;
+    }
+    .ham_menu_navbar_left{
+      h1{
+        font-size: 25px !important;
+      }
+      img{
+        width: 40px !important;
+        height: 40px !important;;
+      }
+    }
   
     }
    

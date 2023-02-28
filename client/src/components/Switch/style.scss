@@ -4,12 +4,7 @@
     align-items: center;
     // gap: 5px;
      width: 120px !important;
-     position: relative;
     cursor: pointer;
-    .img_right{
-    position: absolute;
-    }
-  
     &__moon,
     &__sun {
       width: 20px;

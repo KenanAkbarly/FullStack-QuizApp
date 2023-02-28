@@ -13,18 +13,18 @@ import emailjs from "@emailjs/browser";
 import toast, { Toaster } from "react-hot-toast";
 import ScrollToTop from "react-scroll-to-top";
 const Footer = () => {
-  const [name, setName] = useState([])
-  const [mail, setMail] = useState([])
-  const [message, setMessage] = useState([])
-  const nameChange = event =>{
-      setName([...name,event.target.value])
-  }
-  const mailChange = event =>{
-      setMail([...mail, event.target.value])
-  }
-  const messageChange = event =>{
-      setMessage([...message, event.target.value])
-  }
+  const [name, setName] = useState([]);
+  const [mail, setMail] = useState([]);
+  const [message, setMessage] = useState([]);
+  const nameChange = (event) => {
+    setName([...name, event.target.value]);
+  };
+  const mailChange = (event) => {
+    setMail([...mail, event.target.value]);
+  };
+  const messageChange = (event) => {
+    setMessage([...message, event.target.value]);
+  };
 
   const { mode } = useSelector((state) => state.darkMode);
   const navigate = useNavigate();
@@ -32,94 +32,101 @@ const Footer = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
-    if(name.length == 0 || message.length == 0 || mail.length == 0){
-        toast('Bütün xanaları doldurun', {
-            duration: 2000,
-            position: 'top-center',
-          
-            // Styling
-            style: {},
-            className: '',
-          
-            // Custom Icon
-            icon: '❌',
-          
-            // Change colors of success/error/loading icon
-            iconTheme: {
-              primary: '#000',
-              secondary: '#fff',
-            },
-          
-            // Aria
-            ariaProps: {
-              role: 'status',
-              'aria-live': 'polite',
-            },
-          });
-    } 
-    else{
-        emailjs.sendForm('service_av4v13g', 'template_tc6z19i', form.current, 'hyuIMQftk4iaBZx3B')
-        .then((result) => {
+    if (name.length == 0 || message.length == 0 || mail.length == 0) {
+      toast("Bütün xanaları doldurun", {
+        duration: 2000,
+        position: "top-center",
+
+        // Styling
+        style: {},
+        className: "",
+
+        // Custom Icon
+        icon: "❌",
+
+        // Change colors of success/error/loading icon
+        iconTheme: {
+          primary: "#000",
+          secondary: "#fff",
+        },
+
+        // Aria
+        ariaProps: {
+          role: "status",
+          "aria-live": "polite",
+        },
+      });
+    } else {
+      emailjs
+        .sendForm(
+          "service_av4v13g",
+          "template_tc6z19i",
+          form.current,
+          "hyuIMQftk4iaBZx3B"
+        )
+        .then(
+          (result) => {
             console.log(result.text);
-            toast('Mesaj göndərildi', {
+            toast("Mesaj göndərildi", {
               duration: 4000,
-              position: 'top-center',
-            
+              position: "top-center",
+
               // Styling
               style: {},
-              className: '',
-            
+              className: "",
+
               // Custom Icon
-              icon: '📨',
-            
+              icon: "📨",
+
               // Change colors of success/error/loading icon
               iconTheme: {
-                primary: '#000',
-                secondary: '#fff',
+                primary: "#000",
+                secondary: "#fff",
               },
-            
+
               // Aria
               ariaProps: {
-                role: 'status',
-                'aria-live': 'polite',
+                role: "status",
+                "aria-live": "polite",
               },
             });
-           
-            e.target.reset()
-        }
-        , (error) => {
-              console.log(error.text);
-              toast('Mesaj göndərilmedi', {
-                  duration: 2000,
-                  position: 'top-center',
-                
-                  // Styling
-                  style: {},
-                  className: '',
-                
-                  // Custom Icon
-                  icon: '❌',
-                
-                  // Change colors of success/error/loading icon
-                  iconTheme: {
-                    primary: '#000',
-                    secondary: '#fff',
-                  },
-                
-                  // Aria
-                  ariaProps: {
-                    role: 'status',
-                    'aria-live': 'polite',
-                  },
-                });
-          });
+
+            e.target.reset();
+          },
+          (error) => {
+            console.log(error.text);
+            toast("Mesaj göndərilmedi", {
+              duration: 2000,
+              position: "top-center",
+
+              // Styling
+              style: {},
+              className: "",
+
+              // Custom Icon
+              icon: "❌",
+
+              // Change colors of success/error/loading icon
+              iconTheme: {
+                primary: "#000",
+                secondary: "#fff",
+              },
+
+              // Aria
+              ariaProps: {
+                role: "status",
+                "aria-live": "polite",
+              },
+            });
+          }
+        );
     }
-    };
+  };
   return (
     <>
       <footer
         style={
-          mode ? { backgroundColor: "#25303F" } : { backgroundColor: "#1a1a1a" }
+          mode ? { backgroundColor: "#1D3461" } : { backgroundColor: "#1a1a1a" }
         }
         className={styled.footer__home}
       >
@@ -182,7 +189,7 @@ const Footer = () => {
                 <div className={styled.inp_body}>
                   <AiOutlineUser />
                   <input
-                onChange={nameChange}
+                    onChange={nameChange}
                     placeholder="İstifadəçi adı"
                     type="text"
                     name="user_name"
@@ -190,14 +197,19 @@ const Footer = () => {
                 </div>
                 <div className={styled.inp_body}>
                   <AiOutlineMail />
-                  <input 
+                  <input
                     onChange={mailChange}
-                  type="email" placeholder="E-mail" name="user_email" />
+                    type="email"
+                    placeholder="E-mail"
+                    name="user_email"
+                  />
                 </div>
                 <div className={styled.textArea_body}>
-                  <textarea 
-                onChange={messageChange}
-                placeholder="Mesaj yazın" name="message" />
+                  <textarea
+                    onChange={messageChange}
+                    placeholder="Mesaj yazın"
+                    name="message"
+                  />
                 </div>
                 <div className={styled.submit_btn}>
                   <input type="submit" value="Göndər" />

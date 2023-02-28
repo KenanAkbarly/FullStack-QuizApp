@@ -50,7 +50,7 @@ const HomeFooter = () => {
             <div className={styled.footer_right}>
               <h1>Əlaqə məlumatı</h1>
               <div className={styled.social_media}>
-                 <p><GoLocation/>  Bakı, Azərbaycan AZ 1073 Azərbaycan Texniki Universiteti.</p>
+                 <p><GoLocation/>  Bakı, Azərbaycan AZ 1073.</p>
                 <p><AiOutlineMail/> akbarlykenan@gmail.com</p>
                 <h3>Bizi izlə</h3>
                 <div className={styled.effect}>

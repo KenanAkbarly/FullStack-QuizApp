@@ -1,11 +1,4 @@
 footer {
-  // background: #3B3B3B;
-
-  // padding-top:81px ;
-
-  // border-top:3px solid #3B3B3B;
-
-  // padding-top: 40px;
   .footer__container {
     width: 1200px;
     height: auto;
@@ -104,7 +97,7 @@ footer {
         margin-top: 10px;
         h1 {
           font-size: 22px;
-          color: rgb(104, 104, 104);
+          color: rgb(255, 255, 255);
           margin-bottom: 10px;
         }
         p {
@@ -130,7 +123,7 @@ footer {
           }
           &:hover::after {
             cursor: pointer;
-            width: 60%;
+            width: 50%;
             left: 0;
           }
         }
@@ -146,12 +139,12 @@ footer {
         height: 220px;
         padding: 10px 5px;
         /* From https://css.glass */
-        background: rgba(65, 65, 65, 0.4);
-        border-radius: 16px;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        border: 1px solid rgba(65, 65, 65, 0.4);
+        background: rgba(87, 175, 230, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(87, 175, 230, 0.1);
         h1 {
           color: white;
           font-size: 25px;
@@ -224,8 +217,14 @@ footer {
             height: 30px;
             border-radius: 5px;
             border: none;
-            background-color: #264e93;
+            background-color: #27AAE1;
             color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            &:hover{
+            background-color: #59b8e1;
+
+            }
           }
         }
       }
