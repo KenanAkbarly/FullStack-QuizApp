@@ -52,7 +52,6 @@ const Contact = () => {
         else{
             emailjs.sendForm('service_av4v13g', 'template_tc6z19i', form.current, 'hyuIMQftk4iaBZx3B')
             .then((result) => {
-                console.log(result.text);
                 toast('Mesaj göndərildi', {
                   duration: 4000,
                   position: 'top-center',
@@ -80,7 +79,6 @@ const Contact = () => {
                 e.target.reset()
             }
             , (error) => {
-                  console.log(error.text);
                   toast('Mesaj göndərilmedi', {
                       duration: 2000,
                       position: 'top-center',

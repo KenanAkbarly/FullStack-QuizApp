@@ -18,7 +18,6 @@ window.onscroll = function(){
   }else{
     setScroll(false)
   }
-  console.log(scroll);
 }
   return (
    <>

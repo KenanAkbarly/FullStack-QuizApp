@@ -55,7 +55,6 @@ const Exams = () => {
   const navigate = useNavigate();
   const [exams, setExams] = useState([])
   const dispatch = useDispatch();
-  console.log('exams',exams)
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const {mode} = useSelector((state)=> state.darkMode)

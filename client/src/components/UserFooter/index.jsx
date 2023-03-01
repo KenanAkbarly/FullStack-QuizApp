@@ -66,7 +66,6 @@ const Footer = () => {
         )
         .then(
           (result) => {
-            console.log(result.text);
             toast("Mesaj göndərildi", {
               duration: 4000,
               position: "top-center",
@@ -94,7 +93,6 @@ const Footer = () => {
             e.target.reset();
           },
           (error) => {
-            console.log(error.text);
             toast("Mesaj göndərilmedi", {
               duration: 2000,
               position: "top-center",
