@@ -146,6 +146,7 @@ const Footer = () => {
                 <div className={styled.effect}>
                   <div className={styled.buttons}>
                     <a
+                      target={"_blank"}
                       href="https://www.instagram.com/kenanakbarly/?hl=ru"
                       className={styled.insta}
                       title="İnstagram-da bizə qoşulun"
@@ -155,6 +156,7 @@ const Footer = () => {
                       </i>
                     </a>
                     <a
+                      target={"_blank"}
                       href="https://www.linkedin.com/in/kenan-akbarly-a815b222a/"
                       className={styled.in}
                       title="Linkedİn-də bizə qoşulun"
@@ -164,6 +166,7 @@ const Footer = () => {
                       </i>
                     </a>
                     <a
+                      target={"_blank"}
                       href="https://github.com/KenanAkbarly"
                       className={styled.github}
                       title="Github-da bizə qoşulun"
