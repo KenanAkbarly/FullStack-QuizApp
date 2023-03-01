@@ -10,7 +10,7 @@ const Footer = () => {
   return (
     <>
      <footer 
-      style={mode? {backgroundColor:'#25303F'}:{backgroundColor:'#222222'}}
+      style={mode? {backgroundColor:'#1D3461'}:{backgroundColor:'#222222'}}
      className={styled.footer__home}>
         <ScrollToTop smooth top='60' />
         <div className={styled.footer__container}>
